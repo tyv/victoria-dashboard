@@ -13,20 +13,39 @@
         flatten     = require('gulp-flatten'),
         sourceMaps  = require('gulp-sourcemaps'),
         plumber     = require('gulp-plumber'),
+        karma       = require('gulp-karma'),
         paths;
     
     paths = {
         js : [
             'node_modules/angular/angular.js',
             'node_modules/ui-router/angular-ui-router.js',
+            'node_modules/d3/d3.js',
+            'node_modules/angularfire/dist/angularfire.js',
             'app/main.js',
             'app/modules/**/*.js'
+        ],
+        testing: [
+            'node_modules/angular-mocks/angular-mocks.js',
+            'test/unit/**/*.js'
         ]
     };
         
 
     // Default task to be run with `gulp`
-    gulp.task('default', ['views', 'styles', 'js', 'browser-sync'], function () {
+    gulp.task('default', ['views', 'styles', 'js', 'browser-sync', 'karma'], function () {
+        gulp.watch(['app/main.js', 'app/modules/**/*.js'], ['js']);
+            // Watch our scss files
+            gulp.watch(['app/main.scss', 'app/modules/**/*.scss'], [
+                'styles'
+            ]);
+
+            gulp.watch(['app/index.html', 'app/modules/**/*.html'], [
+                'views'
+            ]);
+    });
+
+    gulp.task('bare', ['views', 'styles', 'js', 'browser-sync'], function () {
         gulp.watch(['app/main.js', 'app/modules/**/*.js'], ['js']);
             // Watch our scss files
             gulp.watch(['app/main.scss', 'app/modules/**/*.scss'], [
@@ -86,5 +105,13 @@
             .pipe(flatten())
             .pipe(gulp.dest('public/views/'))
             .pipe(reload({stream:true}));
+    });
+
+    gulp.task('karma', function() {
+        gulp.src(paths.js.concat(paths.testing))
+        .pipe(karma({
+            configFile: 'test/karma.conf.js',
+            action: 'watch'
+        }));
     });
 })();

@@ -1,15 +1,17 @@
 ;(function() {
 	'use strict';
 
-	angular.module('app', ['ui.router'])
+	angular.module('dashboard', ['ui.router'])
 	.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
 		$locationProvider.html5Mode(true);
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-			.state('home', {
-				url: '/'
+			.state('dashboard', {
+				url: '/',
+				templateUrl: 'views/dashboard.html',
+				controller: 'dashboardCtrl as dashboard'
 			});
 
 	});
