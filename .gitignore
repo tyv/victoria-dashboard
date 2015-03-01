@@ -4,3 +4,4 @@ app/vendor/
 public/*
 .DS_Store
 npm-debug.log
+app/testData.*
