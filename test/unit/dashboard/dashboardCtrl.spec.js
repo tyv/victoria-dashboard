@@ -3,9 +3,11 @@ describe('accountLoginCtrl', function() {
 
     var createController, 
         $rootScope, 
-        $state,
-        deferred, 
-        scope;
+        deferred,
+        vm,
+        scope,
+        dataService,
+        fakeData;
 
     beforeEach(module('dashboard'));
 
@@ -14,17 +16,30 @@ describe('accountLoginCtrl', function() {
         scope = $rootScope.$new();
         deferred = $q.defer();
 
+        dataService = {
+            getData: function(){}
+        };
 
         createController = function() {
-            return $controller('dashboardCtrl');
+            return $controller('dashboardCtrl', {
+                dataService: dataService
+            });
         };
+
+        fakeData =  {
+            data: true
+        };
+
+        //Spys
+        spyOn(dataService, 'getData').and.returnValue(fakeData);
 
         vm = createController();
 
-        //Spys
-
     }));
 
-    
+    it('should get data for burndown chart', function() {
 
+        expect(dataService.getData).toHaveBeenCalledWith('burndown');
+        expect(vm.burndownData).toEqual(fakeData);
+    });
 });
