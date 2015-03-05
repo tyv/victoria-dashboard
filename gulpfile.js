@@ -21,9 +21,10 @@
             'node_modules/angular/angular.js',
             'node_modules/ui-router/angular-ui-router.js',
             'node_modules/d3/d3.js',
+            'bower_components/firebase/firebase.js',
             'node_modules/angularfire/dist/angularfire.js',
             'app/main.js',
-            'app/modules/**/*.js'
+            'app/**/*.js'
         ],
         testing: [
             'node_modules/angular-mocks/angular-mocks.js',
@@ -34,25 +35,25 @@
 
     // Default task to be run with `gulp`
     gulp.task('default', ['views', 'styles', 'js', 'browser-sync', 'karma'], function () {
-        gulp.watch(['app/main.js', 'app/modules/**/*.js'], ['js']);
+        gulp.watch(['app/main.js', 'app/**/*.js'], ['js']);
             // Watch our scss files
-            gulp.watch(['app/main.scss', 'app/modules/**/*.scss'], [
+            gulp.watch(['app/main.scss', 'app/**/*.scss'], [
                 'styles'
             ]);
 
-            gulp.watch(['app/index.html', 'app/modules/**/*.html'], [
+            gulp.watch(['app/index.html', 'app/**/*.html'], [
                 'views'
             ]);
     });
 
     gulp.task('bare', ['views', 'styles', 'js', 'browser-sync'], function () {
-        gulp.watch(['app/main.js', 'app/modules/**/*.js'], ['js']);
+        gulp.watch(['app/main.js', 'app/**/*.js'], ['js']);
             // Watch our scss files
-            gulp.watch(['app/main.scss', 'app/modules/**/*.scss'], [
+            gulp.watch(['app/main.scss', 'app/**/*.scss'], [
                 'styles'
             ]);
 
-            gulp.watch(['app/index.html', 'app/modules/**/*.html'], [
+            gulp.watch(['app/index.html', 'app/**/*.html'], [
                 'views'
             ]);
     });
@@ -100,7 +101,7 @@
             .pipe(reload({stream:true}));
 
             // Any other view files from app/views
-            gulp.src('app/modules/**/*.html')
+            gulp.src('app/**/*.html')
             // Will be put in the public/views folder
             .pipe(flatten())
             .pipe(gulp.dest('public/views/'))

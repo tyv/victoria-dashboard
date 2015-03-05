@@ -38,7 +38,6 @@ describe('accountLoginCtrl', function() {
     }));
 
     it('should get data for burndown chart', function() {
-
         expect(dataService.getData).toHaveBeenCalledWith('burndown');
         expect(vm.burndownData).toEqual(fakeData);
     });

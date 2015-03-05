@@ -1,5 +1,6 @@
 logs/*
 node_modules/
+bower_components/
 app/vendor/
 public/*
 .DS_Store
