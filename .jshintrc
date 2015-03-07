@@ -27,6 +27,7 @@
     "angular": false,
     "beforeEach": false,
     "inject": false,
-    "spyOn": false
+    "spyOn": false,
+    "Firebase": false
   }
 }

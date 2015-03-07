@@ -22,6 +22,7 @@
             'node_modules/ui-router/angular-ui-router.js',
             'node_modules/d3/d3.js',
             'bower_components/firebase/firebase.js',
+            'bower_components/moment/moment.js',
             'node_modules/angularfire/dist/angularfire.js',
             'app/main.js',
             'app/**/*.js'
