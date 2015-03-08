@@ -29,7 +29,8 @@
         ],
         testing: [
             'node_modules/angular-mocks/angular-mocks.js',
-            'test/unit/**/*.js'
+            'test/unit/**/*.js',
+            'app/**/*.html'
         ]
     };
         
@@ -112,7 +113,7 @@
     gulp.task('karma', function() {
         gulp.src(paths.js.concat(paths.testing))
         .pipe(karma({
-            configFile: 'test/karma.conf.js',
+            configFile: 'karma.conf.js',
             action: 'watch'
         }));
     });
