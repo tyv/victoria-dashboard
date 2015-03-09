@@ -34,7 +34,8 @@
 				data: '='
 			},
 			templateUrl: 'views/adminNpsDirective.html',
-			controller: controller
+			controller: controller,
+			transclude: true
 		};
 	});
 })();

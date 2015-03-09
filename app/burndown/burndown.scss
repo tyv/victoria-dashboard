@@ -1,0 +1,25 @@
+.admin-container {
+	.burndown {
+		.new {
+			border-bottom: 3px solid $well-grey;
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+		}
+
+		.days {
+			input {
+				color: #fff;
+				background: $well-grey; 
+			}
+
+			label {
+				padding: 8px 0;
+				color: $green;
+			}
+
+			.lighten {
+				color: #fff;
+			}
+		}
+	}
+}

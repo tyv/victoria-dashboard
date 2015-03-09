@@ -3,26 +3,31 @@
 	<div class="row">
 		<div class="col-md-6">
 			<section class="burndown block">
-				<h2>Burndown</h2>
-				<admin-burndown data="admin.burndownData"></admin-burndown>
+				<admin-burndown data="admin.burndownData">
+					<h2>Burndown</h2>
+				</admin-burndown>
 			</section>
 			<section class="velocity block">
-				<h2>Velocity</h2>
-				<admin-velocity data="admin.velocityData"></admin-velocity>
-			</section>
-			<section class="satisfaction block">
-				<h2>Satisfaction</h2>
-				<admin-satisfaction data="admin.satisfactionData"></admin-satisfaction>
+				<admin-velocity data="admin.velocityData">
+					<h2>Velocity</h2>
+				</admin-velocity>
 			</section>
 		</div>
 		<div class="col-md-6">
 			<section class="todo block">
-				<h2>Todo</h2>
-				<admin-todo data="admin.todoData"></admin-todo>
+				<admin-todo data="admin.todoData">
+					<h2>Todo</h2>
+				</admin-todo>
 			</section>
 			<section class="nps block">
-				<h2>NPS Scores</h2>
-				<admin-nps data="admin.npsData"></admin-nps>
+				<admin-nps data="admin.npsData">
+					<h2>NPS Scores</h2>
+				</admin-nps>
+			</section>
+			<section class="satisfaction block">
+				<admin-satisfaction data="admin.satisfactionData">
+					<h2>Satisfaction</h2>
+				</admin-satisfaction>
 			</section>
 		</div>
 	</div>

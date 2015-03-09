@@ -17,7 +17,8 @@
 				data: '='
 			},
 			templateUrl: 'views/adminVelocityDirective.html',
-			controller: controller
+			controller: controller,
+			transclude: true
 		};
 	});
 })();

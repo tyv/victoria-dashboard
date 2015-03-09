@@ -11,7 +11,8 @@
 				endDateIsBeforeStartDate,
 				numberOfDaysInSprint,
 				saveData,
-				getNameOfDay;
+				getNameOfDay,
+				calculateRemaining;
 
 			$scope.dateChange = function() {
 				console.log('datechange');
@@ -32,6 +33,7 @@
 			};
 
 			saveData = function() {
+				$scope.data.remaining = calculateRemaining();
 				$scope.data.$save()
 				.then(function() {
 					console.log('saved');
@@ -39,6 +41,14 @@
 				.catch(function() {
 					console.log('problem saving the data');
 				});
+			};
+
+			calculateRemaining = function calculateRemaining() {
+				var total = 0;
+				$scope.data.days.forEach(function(day) {
+					total += day.qty;
+				});
+				return total;
 			};
 
 			createDays = function(differenceInDays) {
@@ -95,7 +105,8 @@
 				data: '='
 			},
 			templateUrl: 'views/adminBurndownDirective.html',
-			controller: controller
+			controller: controller,
+			transclude: true
 		};
 	});
 })();

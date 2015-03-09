@@ -1,14 +1,22 @@
 .admin-container {
-	padding: 20px 0;
+	padding: 10px 0;
 }
 
 .block {
 	background: $block-grey;
 	padding-bottom: 20px;
+	margin-top: 10px;
+
+	header {
+		padding: 10px 15px;
+		background: $block-heading-grey;
+		font-size: 1.5rem;
+		margin-bottom: 10px;
+		color: $blue;
+	}
 
 	h2 {
-		padding: 10px;
-		background: $block-heading-grey;
+		margin: 0;
 		font-size: 1.5rem;
 	}
 

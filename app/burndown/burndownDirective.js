@@ -113,7 +113,7 @@
 			        .call(yAxis);
 
 			    //Add overview
-			    scope.overview = filteredDays[filteredDays.length -1].remaining;
+			    scope.overview = data.remaining;
 			};
 
 			//only render after we have the data

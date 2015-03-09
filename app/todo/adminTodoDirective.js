@@ -18,6 +18,12 @@
 				$scope.newTodo = '';
 			};
 
+			$scope.save = function save() {
+				$scope.data.forEach(function(item) {
+					$scope.data.$save(item);
+				});
+			};
+
 		};
 
 		return {
@@ -26,7 +32,8 @@
 				data: '='
 			},
 			templateUrl: 'views/adminTodoDirective.html',
-			controller: controller
+			controller: controller,
+			transclude: true
 		};
 	});
 })();
