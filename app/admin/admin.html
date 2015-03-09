@@ -1,0 +1,29 @@
+<ng-include src="'views/adminHeader.html'"></ng-include>
+<div class="container admin-container">
+	<div class="row">
+		<div class="col-md-6">
+			<section class="burndown block">
+				<h2>Burndown</h2>
+				<admin-burndown data="admin.burndownData"></admin-burndown>
+			</section>
+			<section class="velocity block">
+				<h2>Velocity</h2>
+				<admin-velocity data="admin.velocityData"></admin-velocity>
+			</section>
+			<section class="satisfaction block">
+				<h2>Satisfaction</h2>
+				<admin-satisfaction data="admin.satisfactionData"></admin-satisfaction>
+			</section>
+		</div>
+		<div class="col-md-6">
+			<section class="todo block">
+				<h2>Todo</h2>
+				<admin-todo data="admin.todoData"></admin-todo>
+			</section>
+			<section class="nps block">
+				<h2>NPS Scores</h2>
+				<admin-nps data="admin.npsData"></admin-nps>
+			</section>
+		</div>
+	</div>
+</div>

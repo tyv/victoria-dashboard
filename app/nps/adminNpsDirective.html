@@ -1,0 +1,35 @@
+<div class="clearfix">
+	<div class="col-md-12">
+		<form name="npsNew" class="form-inline new" novalidate>
+			<div class="form-group new-item">
+				<div class="col-1">
+					<input type="text" class="form-control" placeholder="Customer" ng-model="name" ng-minlength="1" required>
+				</div>
+				<div class="col-2">
+					<input type="number" class="form-control" placeholder="Score" ng-model="score" required>
+				</div>
+				<div class="col-3">
+					<button class="btn btn-primary" ng-click="add()" ng-disabled="npsNew.$invalid">Add</button>
+				</div>
+			</div>
+		</form>
+		<form name="npsCustomers">
+			<ul class="form-group">
+				<li ng-repeat="customer in data" class="customer">
+					<div class="col-1">
+						<input type="text" class="form-control" placeholder="Customer" ng-model="customer.name" ng-minlength="1" required>
+					</div>
+					<div class="col-2">
+						<input type="number" class="form-control" placeholder="Score" ng-model="customer.score" required>
+					</div>
+					<div class="col-3">
+						<a class="btn btn-default" ng-click="removeItem(customer)"><span>X</span></a>
+					</div>
+				</li>
+			</ul>
+			<div>
+				<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="npsCustomers.$invalid">Save</button>
+			</div>
+		</form>
+	</div>
+</div>

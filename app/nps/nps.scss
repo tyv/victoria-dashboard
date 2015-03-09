@@ -1,0 +1,68 @@
+.admin-container {
+	.nps {
+		ul {
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+			margin-bottom: 10px;
+			border-radius: $border-radius;
+			position: relative;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+		.close-btn {
+			position: absolute;
+			right: 4px;
+			top: 4px;
+		}
+
+		.new {
+			border-bottom: 3px solid $well-grey;
+			padding-bottom: 10px;
+			margin-bottom: 20px;
+		}
+
+		.new-item, 
+		.customer {
+			display: flex;
+			margin-bottom: 10px;
+
+			.col-1, 
+			.col-2, 
+			.col-3 {
+				flex-grow: 1;
+			}
+
+			.col-2 {
+				margin: 0 10px;
+				max-width: 80px;
+			}
+
+			.col-3 {
+				text-align: right;
+				max-width: 60px;
+			}
+
+			input {
+				width: 100%;
+				display: block;
+			}
+		}
+
+		.customer {
+			input {
+				color: #fff;
+				background: $well-grey; 
+			}
+		}
+
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+	}
+}

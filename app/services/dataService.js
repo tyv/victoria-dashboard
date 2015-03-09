@@ -1,12 +1,17 @@
 ;(function() {
 	'use strict';
 	angular.module('dashboard')
-	.factory('dataService', function dataService(FIREBASE_URL, $firebaseObject) {
+	.factory('dataService', function dataService(FIREBASE_URL, $firebaseObject, $firebaseArray) {
 		var service,
 			ref = new Firebase(FIREBASE_URL);
 
-		function getData(name) {
-			return $firebaseObject(ref.child(name));
+		function getData(name, type) {
+			type = type || 'object';
+			if(type === 'object') {
+				return $firebaseObject(ref.child(name));
+			} else if(type === 'array') {
+				return $firebaseArray(ref.child(name));
+			}
 		} 
 
 		service = {

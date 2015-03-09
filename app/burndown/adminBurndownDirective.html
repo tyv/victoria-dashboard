@@ -1,0 +1,22 @@
+<div class="clearfix">
+	<div class="col-md-12">
+		<form name="burndownDates">
+			<label for="startDate">Start Date</label>
+			<input type="date" name="startDate" id="startDate" ng-model="data.startDate" ng-change="dateChange()">
+			<label for="endDate">End Date</label>
+			<input type="date" name="endDate" id="endDate" ng-model="data.endDate" ng-change="dateChange()" min="{{data.startDate}}">
+		</form>
+	</div>
+
+	<div class="col-md-12">
+		<form name="burndownDays" novalidate>
+			<div class="form-group" ng-repeat="day in data.days">
+				<ng-form name="formDays" ng-if="day.editable">
+					<label>Day {{day.num}} {{day.name}} {{day.date}}</label>
+					<input type="number" min="0" ng-model="day.qty">
+				</ng-form>
+			</div>
+			<button class="btn btn-primary pull-right" ng-click="dayChange(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid">Save</button>
+		</form>
+	</div>	
+</div>

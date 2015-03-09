@@ -1,0 +1,17 @@
+<div class="clearfix">
+	<form name="velocity" novalidate>
+		<div class="form-group clearfix">
+			<div class="col-md-6">
+				<label>Previous</label>
+				<input type="number" class="form-control" placeholder="Previous Velocity" ng-model="data.prevVelocity" min="0" required>
+			</div>
+			<div class="col-md-6">
+				<label>Current</label>
+				<input type="number" class="form-control" placeholder="Current Velocity" ng-model="data.currentVelocity" min="0" required>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="velocity.$invalid">Save</button>
+		</div>
+	</form>
+</div>

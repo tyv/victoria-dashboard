@@ -1,0 +1,18 @@
+.admin-container {
+	padding: 20px 0;
+}
+
+.block {
+	background: $block-grey;
+	padding-bottom: 20px;
+
+	h2 {
+		padding: 10px;
+		background: $block-heading-grey;
+		font-size: 1.5rem;
+	}
+
+	.well {
+		margin: 0 20px;
+	}
+}

@@ -1,0 +1,37 @@
+.admin-container {
+	.todo {
+		ul {
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+			margin-bottom: 10px;
+			background: $well-grey;
+			padding: 15px 10px;
+			border-radius: $border-radius;
+			position: relative;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+		.close-btn {
+			position: absolute;
+			right: 4px;
+			top: 4px;
+		}
+		.add-btn {
+			margin-left: 10px;
+		}
+		.form-group	{
+			display: block;
+			display: flex;
+			margin: 10px 0;
+		}
+		input[type="text"] {
+			width: 100%
+		}
+
+	}
+}

@@ -13,6 +13,11 @@
 				url: '/',
 				templateUrl: 'views/dashboard.html',
 				controller: 'dashboardCtrl as dashboard'
+			})
+			.state('admin', {
+				url: '/admin',
+				templateUrl: 'views/admin.html',
+				controller: 'adminCtrl as admin'
 			});
 
 	});

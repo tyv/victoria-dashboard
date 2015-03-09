@@ -14,6 +14,7 @@
         sourceMaps  = require('gulp-sourcemaps'),
         plumber     = require('gulp-plumber'),
         karma       = require('gulp-karma'),
+        modRewrite  = require('connect-modrewrite'),
         paths;
     
     paths = {
@@ -65,7 +66,12 @@
         browserSync({
             server: {
                 baseDir: './public',
-                ghostMode: false
+                ghostMode: false,
+                middleware: [
+                    modRewrite([
+                        '!\\.html|\\.js|\\.css|\\.png$ /index.html [L]'
+                    ])
+                ]
             }
         });
     });
@@ -74,6 +80,7 @@
     gulp.task('styles', function () {
         return gulp.src('app/main.scss')
             .pipe(sourceMaps.init())
+            .pipe(plumber())
             .pipe(sass({
                 errorLogToConsole: true
             }))

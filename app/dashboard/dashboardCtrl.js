@@ -4,8 +4,8 @@
 	.controller('dashboardCtrl', function dashboardCtrl(dataService) {
 		var vm = this;
 
-		vm.burndownData = dataService.getData('burndown');
-
+		vm.burndownData = dataService.getData('burndown', 'object');
+		vm.todoData = dataService.getData('todo', 'array');
 	});
 
 })();

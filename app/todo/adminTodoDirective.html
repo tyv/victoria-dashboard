@@ -1,0 +1,18 @@
+<div class="clearfix">
+	<div class="col-md-12">
+		<form name="todoNew" class="form-inline" novalidate>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Add todo" ng-model="newTodo" ng-minlength="1" required>
+				<button class="btn btn-primary add-btn" ng-click="add()" ng-disabled="todoNew.$invalid">Add</button>
+			</div>
+		</form>
+		<ul>
+			<li ng-repeat="todo in data">
+				{{todo.$value}}
+				<button class="btn close-btn btn-default" ng-click="removeItem(todo)">
+					<span>X</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>

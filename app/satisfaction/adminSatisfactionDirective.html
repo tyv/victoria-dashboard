@@ -1,0 +1,17 @@
+<div class="clearfix">
+	<form name="satisfaction" novalidate>
+		<div class="form-group clearfix">
+			<div class="col-md-6">
+				<label>Previous</label>
+				<input type="number" class="form-control" placeholder="Previous Satisfaction" ng-model="data.prevSatisfaction" min="0" required>
+			</div>
+			<div class="col-md-6">
+				<label>Current</label>
+				<input type="number" class="form-control" placeholder="Current Satisfaction" ng-model="data.currentSatisfaction" min="0" required>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="satisfaction.$invalid">Save</button>
+		</div>
+	</form>
+</div>
