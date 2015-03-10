@@ -14,22 +14,26 @@
 				getNameOfDay,
 				calculateRemaining;
 
-			$scope.dateChange = function() {
-				console.log('datechange');
+			$scope.dateChange = function dateChange() {
 				if(endDateIsBeforeStartDate()) {
 					$scope.data.endDate = null;
 				}
-				
+			};
+
+			$scope.newBurndown = function newBurndown() {
 				var diff = numberOfDaysInSprint();
 
 				//create new days
 				$scope.data.days = createDays(diff);
 				saveData();
-				
 			};
 
-			$scope.dayChange = function(valid) {
+			$scope.dayChange = function dayChange() {
 				saveData();
+			};
+
+			$scope.updateTotal = function updateTotal() {
+				$scope.data.remaining = calculateRemaining();
 			};
 
 			saveData = function() {

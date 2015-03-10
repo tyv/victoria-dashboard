@@ -66,3 +66,45 @@
 
 	}
 }
+
+.dashboard-container {
+	.nps {
+		@for $i from 1 through 6 {
+			.score-#{$i} {
+				color: $red;
+			}
+		}
+		@for $i from 9 through 10 {
+			.score-#{$i} {
+				color: $green;
+			}
+		}
+
+		.vis {
+			padding: 10px 20px;
+		}
+		ul {
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+			background: $well-grey;
+			margin-bottom: 10px;
+			padding: 10px;
+			border-radius: $border-radius;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.total {
+			font-size: 5rem;
+			line-height: 5rem;
+			color: $blue;
+			font-weight: bold;
+			text-align: right;
+			margin-bottom: 20px;
+		}
+	}
+}

@@ -6,25 +6,27 @@
 		var controller;
 
 		controller = function controller($scope) {
-			
-			$scope.removeItem = function removeItem(item) {
-				$scope.data.$remove(item);	
-			};
 
-			$scope.add = function add() {
-				$scope.data.$add($scope.newNps);
-				$scope.newTodo = '';
-			};
+			// $scope.removeItem = function removeItem(item) {
+			// 	$scope.data.$remove(item);	
+			// };
+
+			// $scope.add = function add() {
+			// 	$scope.data.$add($scope.newNps);
+			// 	$scope.newTodo = '';
+			// };
 
 		};
 
 		return {
 			restrict: 'E',
 			scope: {
-				data: '='
+				data: '=',
+				npsTotalData: '='
 			},
 			templateUrl: 'views/npsDirective.html',
-			controller: controller
+			controller: controller,
+			transclude: true
 		};
 	});
 })();

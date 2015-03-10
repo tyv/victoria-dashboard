@@ -24,8 +24,7 @@
 			}
 		}
 		.close-btn {
-			margin-left: 10px;
-			width: 59px;
+			margin-left: 21px;
 		}
 		.add-btn {
 			margin-left: 10px;
@@ -36,8 +35,32 @@
 			margin: 10px 0;
 		}
 		input[type="text"] {
-			width: 100%
+			width: 100%;
+			text-overflow: ellipsis;
 		}
 
+	}
+}
+
+.dashboard-container {
+	.todo {
+		.vis {
+			padding: 10px 20px 0;
+		}
+		ul {
+			padding: 0;
+			margin: 0;
+		}
+		li {
+			list-style: none;
+			background: $well-grey;
+			margin-bottom: 10px;
+			padding: 10px;
+			border-radius: $border-radius;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
 	}
 }

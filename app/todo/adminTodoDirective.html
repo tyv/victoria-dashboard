@@ -14,8 +14,8 @@
 			<ul>
 				<li ng-repeat="todo in data">
 					<input type="text" class="form-control" ng-model="todo.$value" ng-minlength="1" required>
-					<a class="btn close-btn btn-default" ng-click="removeItem(todo)">
-						<span>X</span>
+					<a class="btn close-btn btn-default" ng-click="removeItem(todo)" title="Delete">
+						<span><fa name="close"></fa></span>
 					</a>
 				</li>
 			</ul>

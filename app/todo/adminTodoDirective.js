@@ -2,12 +2,10 @@
 	'use strict';
 
 	angular.module('dashboard')
-	.directive('adminTodo', function() {
+	.directive('adminTodo', function($q) {
 		var controller;
 
 		controller = function controller($scope) {
-
-			var saveData;
 			
 			$scope.removeItem = function removeItem(item) {
 				$scope.data.$remove(item);	
@@ -19,9 +17,19 @@
 			};
 
 			$scope.save = function save() {
-				$scope.data.forEach(function(item) {
-					$scope.data.$save(item);
-				});
+				if($scope.todos.$dirty) {
+					var promises = $scope.data.map(function(item) {
+						return $scope.data.$save(item);
+					});
+
+					$q.all(promises)
+					.then(function() {
+						console.log('saved');
+					})
+					.catch(function(e) {
+						console.log(e);
+					});
+				}	
 			};
 
 		};

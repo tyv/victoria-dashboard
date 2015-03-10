@@ -1,6 +1,28 @@
-<burndown data="dashboard.burndownData" width="500", height="500">
-	<h2>Burndown</h2>
-</burndown>
-<todo data="dashboard.todoData">
-	<h2>Todo</h2>
-</todo>
+<ng-include src="'views/header.html'"></ng-include>
+<div class="container dashboard-container">
+	<div class="row">
+		<div class="col-md-8">
+			<section class="burndown block">
+				<burndown data="dashboard.burndownData" width="750", height="400">
+					<h2>Burndown</h2>
+				</burndown>
+			</section>
+			<div class="row">
+				<div class="col-md-6">
+					<section class="nps block">
+						<nps data="dashboard.npsData" width="360" height="360">
+							<h2>NPS Scores</h2>
+						</nps>
+					</section>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<section class="todo block">
+				<todo data="dashboard.todoData">
+					<h2>Todo</h2>
+				</todo>
+			</section>
+		</div>
+	</div>
+</div>

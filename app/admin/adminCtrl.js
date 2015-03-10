@@ -17,8 +17,8 @@
 		vm.satisfactionData = dataService.getData('satisfaction', 'object');
 
 		// Nps
-		vm.npsData = dataService.getData('nps', 'array');
-		
+		vm.npsData = dataService.getData('nps', 'object');
+
 	});
 
 })();

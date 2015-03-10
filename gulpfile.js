@@ -25,6 +25,7 @@
             'bower_components/firebase/firebase.js',
             'bower_components/moment/moment.js',
             'node_modules/angularfire/dist/angularfire.js',
+            'bower_components/angular-fontawesome/dist/angular-fontawesome.js',
             'app/main.js',
             'app/**/*.js'
         ],
@@ -69,7 +70,7 @@
                 ghostMode: false,
                 middleware: [
                     modRewrite([
-                        '!\\.html|\\.js|\\.css|\\.png$ /index.html [L]'
+                        '!\\.html|\\.js|\\.css|\\.png|\\.woff2|\\.eot|\\.svg|\\.ttf|\\.otf|\\.woff$ /index.html [L]'
                     ])
                 ]
             }

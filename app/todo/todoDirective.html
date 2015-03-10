@@ -1,5 +1,10 @@
-<ul>
-	<li ng-repeat="todo in data">
-		{{todo.$value}}
-	</li>
-</ul>
+<header class="clearfix">
+	<div ng-transclude class="pull-left"></div>
+</header>
+<div class="vis">
+	<ul>
+		<li ng-repeat="todo in data">
+			{{todo.$value}}
+		</li>
+	</ul>
+</div>

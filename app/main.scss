@@ -1,8 +1,10 @@
 //Use this file only for imports
 @import "bower_components/bootstrap/css/bootstrap";
+@import "bower_components/font-awesome/scss/font-awesome";
 @import "app/utils/utils";
 @import "app/admin/header";
 @import "app/admin/admin";
+@import "app/dashboard/dashboard";
 @import "app/todo/todo";
 @import "app/velocity/velocity";
 @import "app/nps/nps";

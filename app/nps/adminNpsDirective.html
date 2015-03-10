@@ -9,29 +9,31 @@
 					<input type="text" class="form-control" placeholder="Customer" ng-model="name" ng-minlength="1" required>
 				</div>
 				<div class="col-2">
-					<input type="number" class="form-control" placeholder="Score" ng-model="score" required>
+					<input type="number" class="form-control" placeholder="Score" ng-model="score" min="1" max="10" required>
 				</div>
 				<div class="col-3">
 					<button class="btn btn-primary" ng-click="add()" ng-disabled="npsNew.$invalid">Add</button>
 				</div>
 			</div>
 		</form>
-		<form name="npsCustomers">
+		<form name="customers">
 			<ul class="form-group">
-				<li ng-repeat="customer in data" class="customer">
+				<li ng-repeat="customer in data.customers" class="customer">
 					<div class="col-1">
 						<input type="text" class="form-control" placeholder="Customer" ng-model="customer.name" ng-minlength="1" required>
 					</div>
 					<div class="col-2">
-						<input type="number" class="form-control" placeholder="Score" ng-model="customer.score" required>
+						<input type="number" class="form-control" placeholder="Score" ng-model="customer.score" min="1" max="10" required>
 					</div>
 					<div class="col-3">
-						<a class="btn btn-default" ng-click="removeItem(customer)"><span>X</span></a>
+						<a class="btn btn-default" ng-click="removeItem(customer)" title="Delete">
+							<span><fa name="close"></fa></span>
+						</a>
 					</div>
 				</li>
 			</ul>
 			<div>
-				<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="npsCustomers.$invalid">Save</button>
+				<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="customers.$invalid">Save</button>
 			</div>
 		</form>
 	</div>

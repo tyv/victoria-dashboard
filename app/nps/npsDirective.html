@@ -1,5 +1,13 @@
-<ul>
-	<li ng-repeat="customer in data">
-		{{todo.$value}}
-	</li>
-</ul>
+<header class="clearfix">
+	<div ng-transclude class="pull-left"></div>
+</header>
+<div class="vis clearfix">
+	<div class="total">
+		{{data.score}}
+	</div>
+	<ul>
+		<li ng-repeat="customer in data.customers" class="score-{{customer.score}}">
+			{{customer.name}} <span class="score pull-right">{{customer.score}}</span>
+		</li>
+	</ul>
+</div>

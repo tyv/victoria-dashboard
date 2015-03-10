@@ -6,6 +6,7 @@
 
 		vm.burndownData = dataService.getData('burndown', 'object');
 		vm.todoData = dataService.getData('todo', 'array');
+		vm.npsData = dataService.getData('nps', 'object');
 	});
 
 })();

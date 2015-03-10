@@ -9,20 +9,28 @@
 		linker = function linker(scope, element) {
 			var d3 = d3Service,
 				svg,
+				margin,
+				width,
+				height,
+				graphWidth,
+				vis,
 				moment = momentService;
 
-			var margin = {
-					top: 20,
-					right: 20,
-					bottom: 30,
-					left: 30
-				};
+			margin = {
+				top: 20,
+				right: 20,
+				bottom: 30,
+				left: 40
+			};
 
-			var width = scope.width - margin.left - margin.right;
-				var height = scope.height - margin.top - margin.bottom;
+			vis = element[0].querySelector('.vis');
+			width = scope.width - margin.left - margin.right;
+			height = scope.height - margin.top - margin.bottom;
+			graphWidth = width - 250;
 
-			svg = d3.select(element[0].querySelector('.vis'))
+			svg = d3.select(vis)
 					.append('svg')
+					.attr('class', 'burndown-vis')
 					.attr('width', width + margin.left + margin.right)
 					.attr('height', height + margin.top + margin.bottom)
 					.append('g')
@@ -37,7 +45,7 @@
 
 				var x = d3.time.scale()
 					.domain([startDate, endDate])
-					.range([0, width]);
+					.range([0, graphWidth]);
 
 				var y = d3.scale.linear()
 						.domain([0, data.goal])
@@ -49,7 +57,6 @@
 
 				var yAxis = d3.svg.axis().scale(y)
 					    .orient('left').ticks(5);
-
 
 				var line = d3.svg.line()
 					.x(function(d) { 
@@ -70,50 +77,56 @@
 				//clear old data
 				svg.selectAll('*').remove();
 
+				// Add the X Axis
+				svg.append('g')
+				.attr('class', 'x-axis')
+		        .attr('transform', 'translate(0,'+ height +')')
+		        .call(xAxis);
+
+			    // Add the Y Axis
+			    svg.append('g')
+			        .attr('class', 'y-axis')
+			        .call(yAxis);
+
 				//Add ideal line
 				svg.append('path')
 				.attr('d', line([{date: startDate, remaining: data.goal}, {date: endDate, remaining: 0}]))
-				.style({
-					fill: 'none',
-					stroke: '#ff00ff'
-				});
+				.attr('class', 'ideal-line');
+				
+				//Add burnup
+				svg.append('path')
+				.attr('d', lineUp(filteredDays))
+				.attr('class', 'burnup-line');
 				
 				//Add burndown
 				svg.append('path')
 				.attr('d', line(filteredDays))
-				.style({
-					fill: 'none',
-					stroke: '#fff'
-				});
+				.attr('class', 'burndown-line');
 
-				//Add burnup
-				svg.append('path')
-				.attr('d', lineUp(filteredDays))
-				.style({
-					fill: 'none',
-					stroke: '#fff'
-				});
+				//Add circles to burndown
+				svg.selectAll('dot')
+					.data(filteredDays)
+					.enter().append('circle')
+					.attr('class', 'burndown-dots')
+					.attr('r', 5)
+					.attr('cx', function(d) { return x(new Date(d.date)); })
+					.attr('cy', function(d) { return y(d.remaining); });
 
-				// Add the X Axis
-				svg.append('g')
-				.attr('class', 'x axis')
-		        .attr('transform', 'translate(0,'+ height +')')
-		        .call(xAxis)
-		        .selectAll('text')  
-	            .style({'text-anchor': 'end', 'display': 'none'})
-	            // .attr('dx', '-.8em')
-	            // .attr('dy', '.15em')
-	            // .attr('transform', function(d) {
-	            //     return 'rotate(-65)' 
-	            // });
+				//Add circles to burndown
+				svg.selectAll('dot')
+					.data(filteredDays)
+					.enter().append('circle')
+					.attr('class', 'burnup-dots')
+					.attr('r', 5)
+					.attr('cx', function(d) { return x(new Date(d.date)); })
+					.attr('cy', function(d) { return y(d.done); });
 
-			    // Add the Y Axis
-			    svg.append('g')
-			        .attr('class', 'y axis')
-			        .call(yAxis);
-
-			    //Add overview
-			    scope.overview = data.remaining;
+				//Add overview
+				svg.append('text')
+					.attr('x', graphWidth + 70)
+					.attr('y', 30 + margin.top)
+					.attr('class', 'title')
+					.text(data.remaining + '/' + data.goal);
 			};
 
 			//only render after we have the data

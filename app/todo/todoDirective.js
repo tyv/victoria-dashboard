@@ -26,7 +26,8 @@
 				data: '='
 			},
 			templateUrl: 'views/todoDirective.html',
-			controller: controller
+			controller: controller,
+			transclude: true
 		};
 	});
 })();

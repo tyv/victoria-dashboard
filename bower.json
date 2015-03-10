@@ -19,6 +19,7 @@
   "dependencies": {
     "firebase": "~2.2.2",
     "moment": "~2.9.0",
-    "bootstrap.css": "~2.3.2"
+    "bootstrap.css": "~2.3.2",
+    "angular-fontawesome": "~0.3.2"
   }
 }
