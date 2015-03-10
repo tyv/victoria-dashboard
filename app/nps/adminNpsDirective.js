@@ -48,7 +48,8 @@
 					name: $scope.name
 				});
 				$scope.data.$save();
-
+				$scope.name = '';
+				$scope.score = '';
 			};
 
 			$scope.save = function save() {

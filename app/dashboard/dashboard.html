@@ -10,9 +10,16 @@
 			<div class="row">
 				<div class="col-md-6">
 					<section class="nps block">
-						<nps data="dashboard.npsData" width="360" height="360">
+						<nps data="dashboard.npsData">
 							<h2>NPS Scores</h2>
 						</nps>
+					</section>
+				</div>
+				<div class="col-md-6">
+					<section class="satisfaction block">
+						<satisfaction data="dashboard.satisfactionData" width="360" height="180">
+							<h2>Team Satisfaction</h2>
+						</satisfaction>
 					</section>
 				</div>
 			</div>
@@ -22,6 +29,11 @@
 				<todo data="dashboard.todoData">
 					<h2>Todo</h2>
 				</todo>
+			</section>
+			<section class="nps block">
+				<nps data="dashboard.npsData" width="360" height="360">
+					<h2>Velocity</h2>
+				</nps>
 			</section>
 		</div>
 	</div>

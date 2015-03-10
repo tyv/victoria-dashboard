@@ -7,7 +7,10 @@
 	</div>
 	<ul>
 		<li ng-repeat="customer in data.customers" class="score-{{customer.score}}">
-			{{customer.name}} <span class="score pull-right">{{customer.score}}</span>
+			<div class="li-inner">
+				<span class="name">{{customer.name}}</span>
+				<span class="score pull-right">{{customer.score}}</span>
+			</div>
 		</li>
 	</ul>
 </div>

@@ -5,3 +5,38 @@
 		}
 	}
 }
+
+.dashboard-container {
+	.satisfaction {
+		.chart-color-1,
+		.needle,
+		.needle-center {
+			fill: $blue;
+			stroke: none;
+		}
+		.chart-color-0 {
+			fill: lighten($blue, 20%);
+		}
+		.chart-color-2 {
+			fill: darken($blue, 20%);
+		}
+
+		.total {
+			padding: 0 10px;
+		}
+		.current {
+			font-size: 5rem;			
+			font-weight: bold;
+		}
+		.change {
+			font-size: 3rem;
+			margin-top: 12px;
+			&.positive {
+				color: $green;
+			}
+			&.negative {
+				color: $red;
+			}
+		}
+	}
+}
