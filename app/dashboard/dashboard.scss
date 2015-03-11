@@ -39,3 +39,15 @@
 		}
 	}
 }
+
+@media (max-width: 1200px) {
+	.dashboard-container {
+		.row-1,
+		.row-2 {
+			display: block;
+		}
+		.block {
+			width: 100%!important;
+		}
+	}
+}

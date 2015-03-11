@@ -9,6 +9,14 @@
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
+			.state('login', {
+				url: '/login',
+				templateUrl: 'views/login.html',
+				controller: 'loginCtrl as login'
+			})
+			.state('logout', {
+				controller: 'logoutCtrl'
+			})
 			.state('dashboard', {
 				url: '/',
 				templateUrl: 'views/dashboard.html',
@@ -19,6 +27,17 @@
 				templateUrl: 'views/admin.html',
 				controller: 'adminCtrl as admin'
 			});
-
+	})
+	.run(function($rootScope, authService, $location) {
+		$rootScope.$on('$stateChangeStart', function (ev, to) {
+			if(to.name === 'dashboard' || to.name === 'admin') {
+				if(!authService.signedIn()) {
+					$location.path('/login');
+				}
+			}
+			if(to.name === 'login' && authService.signedIn()) {
+				$location.path('/dashboard');
+			}
+		});
 	});
 })();
