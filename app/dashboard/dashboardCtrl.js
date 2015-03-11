@@ -8,6 +8,7 @@
 		vm.todoData = dataService.getData('todo', 'array');
 		vm.npsData = dataService.getData('nps', 'object');
 		vm.satisfactionData = dataService.getData('satisfaction', 'object');
+		vm.velocityData = dataService.getData('velocity', 'object');
 	});
 
 })();

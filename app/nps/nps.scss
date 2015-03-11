@@ -6,7 +6,7 @@
 		}
 		li {
 			list-style: none;
-			margin-bottom: 10px;
+			margin-bottom: 5px;
 			border-radius: $border-radius;
 			position: relative;
 
@@ -22,14 +22,14 @@
 
 		.new {
 			border-bottom: 3px solid $well-grey;
-			padding-bottom: 10px;
-			margin-bottom: 20px;
+			padding-bottom: 5px;
+			margin-bottom: 10px;
 		}
 
 		.new-item, 
 		.customer {
 			display: flex;
-			margin-bottom: 10px;
+			margin-bottom: 5px;
 
 			.col-1, 
 			.col-2, 
@@ -61,7 +61,7 @@
 		}
 
 		.form-group {
-			margin-bottom: 10px;
+			margin-bottom: 5px;
 		}
 
 	}
@@ -69,6 +69,9 @@
 
 .dashboard-container {
 	.nps {
+		&.block {
+			padding-bottom: 0;
+		}
 		@for $i from 1 through 6 {
 			.score-#{$i} {
 				color: $red;
@@ -114,7 +117,6 @@
 		.total {
 			font-size: 5rem;
 			line-height: 5rem;
-			color: $blue;
 			font-weight: bold;
 			text-align: right;
 			margin-bottom: 20px;

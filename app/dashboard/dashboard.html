@@ -1,40 +1,33 @@
 <ng-include src="'views/header.html'"></ng-include>
 <div class="container dashboard-container">
-	<div class="row">
-		<div class="col-md-8">
-			<section class="burndown block">
-				<burndown data="dashboard.burndownData" width="750", height="400">
-					<h2>Burndown</h2>
-				</burndown>
-			</section>
-			<div class="row">
-				<div class="col-md-6">
-					<section class="nps block">
-						<nps data="dashboard.npsData">
-							<h2>NPS Scores</h2>
-						</nps>
-					</section>
-				</div>
-				<div class="col-md-6">
-					<section class="satisfaction block">
-						<satisfaction data="dashboard.satisfactionData" width="360" height="180">
-							<h2>Team Satisfaction</h2>
-						</satisfaction>
-					</section>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<section class="todo block">
-				<todo data="dashboard.todoData">
-					<h2>Todo</h2>
-				</todo>
-			</section>
-			<section class="nps block">
-				<nps data="dashboard.npsData" width="360" height="360">
-					<h2>Velocity</h2>
-				</nps>
-			</section>
+	<div class="row-1">
+		<section class="burndown block">
+			<burndown data="dashboard.burndownData" width="770", height="400">
+				<h2>Burndown</h2>
+			</burndown>
+		</section>
+		<section class="todo block">
+			<todo data="dashboard.todoData">
+				<h2>Todo</h2>
+			</todo>
+		</section>
+	</div>
+	<div class="row-2">
+		<section class="nps block">
+			<nps data="dashboard.npsData">
+				<h2>NPS Scores</h2>
+			</nps>
+		</section>
+		<section class="satisfaction block">
+			<satisfaction data="dashboard.satisfactionData" width="380" height="180">
+				<h2>Team Satisfaction</h2>
+			</satisfaction>
+		</section>
+		<section class="velocity block">
+			<velocity data="dashboard.velocityData" width="380" height="180">
+				<h2>Velocity</h2>
+			</velocity>
+		</section>
 		</div>
 	</div>
 </div>

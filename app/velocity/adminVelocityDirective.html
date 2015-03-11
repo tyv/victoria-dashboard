@@ -1,20 +1,41 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
+	<div class="pull-right">{{data.currentVelocity.score}}</div>
 </header>
 <div class="clearfix">
-	<form name="velocity" novalidate>
-		<div class="form-group clearfix">
-			<div class="col-md-6">
-				<label>Previous</label>
-				<input type="number" class="form-control" placeholder="Previous Velocity" ng-model="data.prevVelocity" min="0" required>
+	<div class="col-md-12">
+		<form name="velocityNew" class="form-inline new" novalidate>
+			<div class="form-group new-item">
+				<div class="col-1">
+					<input type="date" class="form-control" placeholder="eg: 14/01/2015" ng-model="date" ng-minlength="1" required>
+				</div>
+				<div class="col-2">
+					<input type="number" class="form-control" placeholder="Score" ng-model="score" min="1" required>
+				</div>
+				<div class="col-3">
+					<button class="btn btn-primary" ng-click="add()" ng-disabled="velocityNew.$invalid">Add</button>
+				</div>
 			</div>
-			<div class="col-md-6">
-				<label>Current</label>
-				<input type="number" class="form-control" placeholder="Current Velocity" ng-model="data.currentVelocity" min="0" required>
+		</form>
+		<form name="velocity">
+			<ul class="form-group">
+				<li ng-repeat="velocity in data.velocities | orderBy: '-date'" class="velocity">
+					<div class="col-1">
+						<input type="date" class="form-control" placeholder="eg: 14/01/2015" ng-model="velocity.date" required>
+					</div>
+					<div class="col-2">
+						<input type="number" class="form-control" placeholder="Score" ng-model="velocity.score" min="1" required>
+					</div>
+					<div class="col-3">
+						<a class="btn btn-default" ng-click="removeItem(velocity)" title="Delete">
+							<span><fa name="close"></fa></span>
+						</a>
+					</div>
+				</li>
+			</ul>
+			<div>
+				<button class="btn btn-primary pull-right" ng-show="data.velocities.length" ng-click="save()" ng-disabled="customers.$invalid">Save</button>
 			</div>
-		</div>
-		<div class="col-md-12">
-			<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="velocity.$invalid">Save</button>
-		</div>
-	</form>
+		</form>
+	</div>
 </div>

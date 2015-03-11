@@ -38,8 +38,8 @@
 				left: 40
 			};
 
-			numSections = 3;
-			barWidth = 20;
+			numSections = 4;
+			barWidth = 15;
 			sectionPerc = 1 / numSections / 2;
 			padRad = 0.05;
 			totalPercent = 0.75; //270deg

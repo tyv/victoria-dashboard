@@ -2,9 +2,13 @@
 	.burndown {
 		.new {
 			border-bottom: 3px solid $well-grey;
-			padding-bottom: 20px;
-			margin-bottom: 10px;
+			padding-bottom: 10px;
+			margin-bottom: 0;
 			display: flex;
+		}
+
+		.form-group {
+			margin-bottom: 5px;
 		}
 
 		.col-1, .col-2, .col-3 {
@@ -39,59 +43,63 @@
 }
 
 .dashboard-container {
-	.burndown-vis {
-		.burndown-line {
-			fill: none;
-			stroke: $blue;
-			stroke-width: 3px;
-		}
+	.burndown {
+		min-height: 462px;
 
-		.burnup-line {
-			fill: none;
-			stroke: lighten($block-grey, 10%);
-			stroke-width: 3px;
-		}
-
-		.ideal-line {
-			fill: none;
-			stroke: #fff;
-			stroke-width: 3px;
-			opacity: 0.4;
-		}
-
-		.burndown-dots {
-			fill: $blue;
-		}
-
-		.burnup-dots { 
-			fill: lighten($block-grey, 10%);
-		}
-
-		.x-axis {
-			fill: none;
-			stroke: darken($block-grey, 5%);
-			stroke-width: 3px;
-			.tick {
-				display: none;
+		.vis {
+			.burndown-line {
+				fill: none;
+				stroke: $blue;
+				stroke-width: 3px;
 			}
-		}
 
-		.y-axis {
-			fill: none;
-			stroke: darken($block-grey, 5%);
-			stroke-width: 3px;
+			.burnup-line {
+				fill: none;
+				stroke: lighten($block-grey, 10%);
+				stroke-width: 3px;
+			}
 
-			text {
-				fill: #fff;
-				stroke: none;
+			.ideal-line {
+				fill: none;
+				stroke: #fff;
+				stroke-width: 3px;
 				opacity: 0.4;
 			}
-		}
 
-		.title {
-			fill: $blue;
-			font-size: 6rem;
-			font-weight: bold;
+			.burndown-dots {
+				fill: $blue;
+			}
+
+			.burnup-dots { 
+				fill: lighten($block-grey, 10%);
+			}
+
+			.x-axis {
+				fill: none;
+				stroke: darken($block-grey, 5%);
+				stroke-width: 3px;
+				.tick {
+					display: none;
+				}
+			}
+
+			.y-axis {
+				fill: none;
+				stroke: darken($block-grey, 5%);
+				stroke-width: 3px;
+
+				text {
+					fill: #fff;
+					stroke: none;
+					opacity: 0.4;
+				}
+			}
+
+			.title {
+				fill: $blue;
+				font-size: 6rem;
+				font-weight: bold;
+			}
 		}
 	}
 }

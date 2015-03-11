@@ -1,7 +1,7 @@
 .admin-container {
 	.satisfaction {
 		.form-group {
-			margin-bottom: 10px;
+			margin-bottom: 5px;
 		}
 	}
 }
@@ -11,14 +11,19 @@
 		.chart-color-1,
 		.needle,
 		.needle-center {
-			fill: $blue;
+			// fill: $blue;
+			fill: #fff;
 			stroke: none;
 		}
 		.chart-color-0 {
-			fill: lighten($blue, 20%);
+			fill: $red;
 		}
 		.chart-color-2 {
-			fill: darken($blue, 20%);
+			// fill: darken($blue, 20%);
+			fill: #fff;
+		}
+		.chart-color-3 {
+			fill: $green;
 		}
 
 		.total {

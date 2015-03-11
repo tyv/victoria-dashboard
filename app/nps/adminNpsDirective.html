@@ -1,5 +1,6 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
+	<div class="pull-right">{{data.score}}</div>
 </header>
 <div class="clearfix">
 	<div class="col-md-12">
@@ -18,7 +19,7 @@
 		</form>
 		<form name="customers">
 			<ul class="form-group">
-				<li ng-repeat="customer in data.customers" class="customer">
+				<li ng-repeat="customer in data.customers | orderBy: 'name'" class="customer">
 					<div class="col-1">
 						<input type="text" class="form-control" placeholder="Customer" ng-model="customer.name" ng-minlength="1" required>
 					</div>
