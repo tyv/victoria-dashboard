@@ -1,4 +1,4 @@
-describe('burndown', function() {
+describe('adminBurndown', function() {
 	'use strict';
 
 	var $rootScope,
@@ -6,20 +6,17 @@ describe('burndown', function() {
 		$compile,
 		elem,
 		firebaseData,
-		d3,
-		$body;
+		$body,
+		dscope;
 
 		beforeEach(function() {
 			module('dashboard');
-			module('views/burndownDirective.html')
+			module('views/adminBurndownDirective.html')
 
-			inject(function(_$rootScope_, _$compile_, _d3Service_) {
-				$rootScope = _$rootScope_;
-		        scope = $rootScope.$new();
-		        $compile = _$compile_;
-		        d3 = _d3Service_;
+			inject(function($rootScope, $compile) {
+		        scope = $rootScope;
 
-		        elem = angular.element('<burndown data="burndownData" width="500", height="500">Burndown</burndown>');
+		        elem = angular.element('<admin-burndown data="admin.burndownData"><h2>Burndown</h2></admin-burndown>');
 		        firebaseData = {
 		        	startDate: '2015-03-18',
 		        	endDate: '2015-03-20',
@@ -38,14 +35,14 @@ describe('burndown', function() {
 
 		        $compile(elem)(scope);
 		        scope.$digest();
+		        dscope = elem.isolateScope();
 			});
 
 		});
 
 
 	it('should build a graph', function() {
-		var svg = elem.find('svg.burndown-vis');
-		expect(svg).toExist();
+		console.log(dscope.burndownData);
 	});
 
 });

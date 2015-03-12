@@ -1,9 +1,10 @@
 ;(function() {
 	'use strict';
 	angular.module('dashboard')
-	.factory('authService', function authService(FIREBASE_URL, $q) {
+	.factory('authService', function authService(FIREBASE_URL, $q, firebaseService) {
 
 		var service,
+			Firebase = firebaseService,
 			ref = new Firebase(FIREBASE_URL),
 			user = {};
 

@@ -38,7 +38,10 @@ describe('accountLoginCtrl', function() {
     }));
 
     it('should get data for burndown chart', function() {
-        expect(dataService.getData).toHaveBeenCalledWith('burndown');
-        expect(vm.burndownData).toEqual(fakeData);
+        expect(dataService.getData).toHaveBeenCalledWith('burndown', 'object');
+        expect(dataService.getData).toHaveBeenCalledWith('todo', 'array');
+        expect(dataService.getData).toHaveBeenCalledWith('nps', 'object');
+        expect(dataService.getData).toHaveBeenCalledWith('satisfaction', 'object');
+        expect(dataService.getData).toHaveBeenCalledWith('velocity', 'object');
     });
 });

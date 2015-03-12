@@ -13,7 +13,7 @@
         flatten     = require('gulp-flatten'),
         sourceMaps  = require('gulp-sourcemaps'),
         plumber     = require('gulp-plumber'),
-        karma       = require('gulp-karma'),
+        //karma       = require('karma').server,
         modRewrite  = require('connect-modrewrite'),
         paths;
     
@@ -40,19 +40,7 @@
         
 
     // Default task to be run with `gulp`
-    gulp.task('default', ['views', 'styles', 'js', 'browser-sync', 'karma'], function () {
-        gulp.watch(['app/main.js', 'app/**/*.js'], ['js']);
-            // Watch our scss files
-            gulp.watch(['app/main.scss', 'app/**/*.scss'], [
-                'styles'
-            ]);
-
-            gulp.watch(['app/index.html', 'app/**/*.html'], [
-                'views'
-            ]);
-    });
-
-    gulp.task('bare', ['views', 'styles', 'js', 'browser-sync'], function () {
+    gulp.task('default', ['views', 'styles', 'js', 'browser-sync'], function () {
         gulp.watch(['app/main.js', 'app/**/*.js'], ['js']);
             // Watch our scss files
             gulp.watch(['app/main.scss', 'app/**/*.scss'], [
@@ -120,11 +108,12 @@
             .pipe(reload({stream:true}));
     });
 
-    gulp.task('karma', function() {
-        gulp.src(paths.js.concat(paths.testing))
-        .pipe(karma({
-            configFile: 'karma.conf.js',
-            action: 'watch'
-        }));
-    });
+    //NOTE - run karma from command line for now!!
+    //
+    //
+    // gulp.task('karma', function(done) {
+    //     karma.start({
+    //         configFile: __dirname + '/karma.conf.js'
+    //     }, done);
+    // });
 })();

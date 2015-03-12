@@ -2,7 +2,7 @@ module.exports = function(config){
     'use strict';
     config.set({
 
-        basePath : '../',
+        basePath : __dirname,
 
         autoWatch : true,
 
@@ -11,15 +11,29 @@ module.exports = function(config){
         browsers : ['Chrome'],
 
         preprocessors: {
-            'views/**/*.html': 'ng-html2js'
+            'public/**/*.html': ['ng-html2js']
         },
 
-        // ngHtml2JsPreprocessor: {
-        //    moduleName: 'templates'
-        // },
+        ngHtml2JsPreprocessor: {
+           stripPrefix: 'public/'
+        },
 
         files: [
-            'views/**/*.html'
+            'bower_components/jquery/dist/jquery.js',
+            'node_modules/angular/angular.js',
+            'node_modules/ui-router/angular-ui-router.js',
+            'node_modules/d3/d3.js',
+            'bower_components/firebase/firebase.js',
+            'bower_components/moment/moment.js',
+            'node_modules/angularfire/dist/angularfire.js',
+            'bower_components/angular-animate/angular-animate.js',
+            'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
+            'bower_components/angular-fontawesome/dist/angular-fontawesome.js',
+            'app/main.js',
+            'app/**/*.js',
+            'node_modules/angular-mocks/angular-mocks.js',
+            'test/unit/**/*.js',
+            'public/**/*.html'
         ]
     });
 };

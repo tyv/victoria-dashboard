@@ -1,8 +1,9 @@
 ;(function() {
 	'use strict';
 	angular.module('dashboard')
-	.factory('dataService', function dataService(FIREBASE_URL, $firebaseObject, $firebaseArray) {
+	.factory('dataService', function dataService(FIREBASE_URL, $firebaseObject, $firebaseArray, firebaseService) {
 		var service,
+			Firebase = firebaseService,
 			ref = new Firebase(FIREBASE_URL);
 
 		function getData(name, type) {
