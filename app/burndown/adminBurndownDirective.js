@@ -36,7 +36,7 @@
 				$scope.data.remaining = calculateRemaining();
 			};
 
-			saveData = function() {
+			saveData = function saveData() {
 				$scope.data.remaining = calculateRemaining();
 				$scope.data.$save()
 				.then(function() {
@@ -55,7 +55,7 @@
 				return total;
 			};
 
-			createDays = function(differenceInDays) {
+			createDays = function createDays(differenceInDays) {
 				var days = [],
 					i = 1,
 					num = differenceInDays + 2,
@@ -89,11 +89,11 @@
 				return days;
 			};
 
-			numberOfDaysInSprint = function() {
+			numberOfDaysInSprint = function numberOfDaysInSprint() {
 				return Math.abs(moment($scope.data.startDate).diff($scope.data.endDate, 'days'));
 			};
 
-			endDateIsBeforeStartDate = function() {
+			endDateIsBeforeStartDate = function endDateIsBeforeStartDate() {
 				return moment($scope.data.endDate).isBefore($scope.data.startDate);
 			};
 

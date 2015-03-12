@@ -22,14 +22,13 @@
 				sectionPerc,
 				padRad,
 				i,
-				totalPercent,
 				radius,
 				chartInset,
 				needleLength,
 				needleRadius,
 				perc,
-				rotation,
-				change;
+				evaluateChange,
+				radToDeg;
 
 			margin = {
 				top: 20,
@@ -42,7 +41,7 @@
 			barWidth = 15;
 			sectionPerc = 1 / numSections / 2;
 			padRad = 0.05;
-			totalPercent = 0.75; //270deg
+			// totalPercent = 0.75; //270deg
 			chartInset = 10;
 			needleLength = 100;
 			needleRadius = 10;
@@ -65,7 +64,8 @@
 					endPadRad,
 					arc,
 					needle,
-					thetaRad;
+					thetaRad,
+					totalPercent = 0.75; //270deg
 
 				needle = function needle() {
 					var halfCircle,
@@ -119,6 +119,8 @@
 						.startAngle(arcStartRad + startPadRad)
 						.endAngle(arcEndRad - endPadRad);
 
+						console.log(totalPercent);
+
 					svg.append('path')
 						.attr('class', 'arc chart-color-'+i)
 						.attr('d', arc);
@@ -149,6 +151,20 @@
 				return deg * Math.PI / 180;
 			};
 
+			radToDeg = function radToDeg(rad) {
+				return rad * 180 / Math.PI;
+			};
+
+			evaluateChange = function evaluateChange() {
+				scope.percentChange = Math.floor(((scope.data.currentSatisfaction - scope.data.prevSatisfaction) / scope.data.prevSatisfaction) * 100);
+				if(scope.percentChange < 0) {
+					scope.rotation = 90;
+					scope.changeClass = 'negative';
+				} else if(scope.percentChange > 0) {
+					scope.rotation = 270;
+					scope.changeClass = 'positive';
+				}
+			};
 
 			//only render after we have the data
 			scope.data.$loaded(function() {
@@ -156,14 +172,7 @@
 					if(newValue) {
 						perc = scope.data.currentSatisfaction / 100;
 						//Evaluate change
-						scope.percentChange = Math.floor(((scope.data.currentSatisfaction - scope.data.prevSatisfaction) / scope.data.prevSatisfaction) * 100);
-						if(scope.percentChange < 0) {
-							scope.rotation = 90;
-							scope.changeClass = 'negative';
-						} else if(scope.percentChange > 0) {
-							scope.rotation = 270;
-							scope.changeClass = 'positive';
-						}
+						evaluateChange();
 						scope.render(scope.data);
 					}
 				}, true);

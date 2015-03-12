@@ -25,6 +25,8 @@
             'bower_components/firebase/firebase.js',
             'bower_components/moment/moment.js',
             'node_modules/angularfire/dist/angularfire.js',
+            'bower_components/angular-animate/angular-animate.js',
+            'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
             'bower_components/angular-fontawesome/dist/angular-fontawesome.js',
             'app/main.js',
             'app/**/*.js'
@@ -111,7 +113,7 @@
             .pipe(reload({stream:true}));
 
             // Any other view files from app/views
-            gulp.src('app/**/*.html')
+            gulp.src(['app/**/*.html'])
             // Will be put in the public/views folder
             .pipe(flatten())
             .pipe(gulp.dest('public/views/'))

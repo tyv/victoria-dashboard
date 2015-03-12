@@ -27,15 +27,18 @@
 	.row-1 {
 		.burndown {
 			width: 770px;
+			min-height: 462px;
 		}
 		.todo {
 			width: 380px;
+			min-height: 462px;
 		}
 	}
 
 	.row-2 {
 		.block {
-			width: 380px
+			width: 380px;
+			min-height: 330px;
 		}
 	}
 }
