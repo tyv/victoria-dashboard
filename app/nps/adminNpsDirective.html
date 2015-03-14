@@ -19,7 +19,7 @@
 		</form>
 		<form name="customers">
 			<ul class="form-group">
-				<li ng-repeat="customer in data.customers | orderBy: 'name'" class="customer">
+				<li ng-repeat="customer in data.customers" class="customer">
 					<div class="col-1">
 						<input type="text" class="form-control" placeholder="Customer" ng-model="customer.name" ng-minlength="1" required>
 					</div>
