@@ -5,7 +5,6 @@
         browserSync = require('browser-sync'),
         reload      = browserSync.reload,
         sass        = require('gulp-sass'),
-        minifyCss   = require('gulp-minify-css'),
         concat      = require('gulp-concat'),
         ngAnnotate  = require('gulp-ng-annotate'),
         uglify      = require('gulp-uglify'),
@@ -106,6 +105,38 @@
             .pipe(flatten())
             .pipe(gulp.dest('public/views/'))
             .pipe(reload({stream:true}));
+    });
+
+    gulp.task('dist', [ 'dist-views', 'dist-styles', 'dist-js'], function() {
+        
+    });
+
+    gulp.task('dist-styles', function() {
+        gulp.src('app/main.scss')
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))
+        .pipe(gulp.dest('public/'));
+    });
+
+    gulp.task('dist-js', function() {
+        gulp.src(paths.js)
+        .pipe(concat('app.js'))
+        .pipe(ngAnnotate())
+        .pipe(uglify({
+            mangle: false
+        }))
+        .pipe(gulp.dest('public/'));
+    });
+
+    gulp.task('dist-views', function() {
+        gulp.src('app/index.html')
+        .pipe(gulp.dest('public/'));
+
+        gulp.src(['app/**/*.html'])
+        .pipe(flatten())
+        .pipe(minifyHtml())
+        .pipe(gulp.dest('public/views/'));
     });
 
     //NOTE - run karma from command line for now!!
