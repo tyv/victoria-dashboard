@@ -66,14 +66,6 @@
 						return y(d.remaining);
 					});
 
-				var lineUp = d3.svg.line()
-					.x(function(d) { 
-						return x(new Date(d.date));
-					})
-					.y(function(d) { 
-						return y(d.done);
-					}); 
-
 				//clear old data
 				svg.selectAll('*').remove();
 
@@ -93,24 +85,10 @@
 				.attr('d', line([{date: startDate, remaining: data.goal}, {date: endDate, remaining: 0}]))
 				.attr('class', 'ideal-line');
 				
-				//Add burnup
-				svg.append('path')
-				.attr('d', lineUp(filteredDays))
-				.attr('class', 'burnup-line');
-				
 				//Add burndown
 				svg.append('path')
 				.attr('d', line(filteredDays))
 				.attr('class', 'burndown-line');
-
-				//Add circles to burnup
-				svg.selectAll('dot')
-					.data(filteredDays)
-					.enter().append('circle')
-					.attr('class', 'burnup-dots')
-					.attr('r', 5)
-					.attr('cx', function(d) { return x(new Date(d.date)); })
-					.attr('cy', function(d) { return y(d.done); });
 
 				//Add circles to burndown
 				svg.selectAll('dot')

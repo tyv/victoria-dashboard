@@ -11,7 +11,7 @@ describe('adminBurndown', function() {
 
 		beforeEach(function() {
 			module('dashboard');
-			module('views/adminBurndownDirective.html')
+			module('views/adminBurndownDirective.html');
 
 			inject(function($rootScope, $compile) {
 		        scope = $rootScope;
