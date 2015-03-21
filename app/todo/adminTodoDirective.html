@@ -7,7 +7,7 @@
 		<form name="todoNew" class="form-inline new" novalidate>
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Add todo" ng-model="newTodo" ng-minlength="1" required>
-				<button class="btn btn-primary add-btn" ng-click="add()" ng-disabled="todoNew.$invalid">Add</button>
+				<button class="btn btn-success add-btn" ng-click="add()" ng-disabled="todoNew.$invalid">Add</button>
 			</div>
 		</form>
 		<form name="todos">
@@ -20,7 +20,7 @@
 				</li>
 			</ul>
 			<div>
-				<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="todos.$invalid">Save</button>
+				<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="todos.$invalid"><fa name="thumbs-up"></fa> Save</button>
 			</div>
 		</form>
 	</div>

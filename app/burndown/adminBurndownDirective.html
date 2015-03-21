@@ -19,7 +19,7 @@
 					<input type="number" class="form-control" name="goal" ng-model="data.goal" min="1" placeholder="goal" required>
 				</div>				
 				<div class="col-4">
-					<button class="btn btn-primary add-btn" ng-click="newBurndown()" ng-disabled="burndownDates.$invalid">Add</button>
+					<button class="btn btn-success add-btn" ng-click="newBurndown()" ng-disabled="burndownDates.$invalid">Add</button>
 				</div>
 			</div>
 		</form>
@@ -39,8 +39,7 @@
 					</div>
 				</ng-form>
 			</div>
-			<button class="btn btn-primary pull-right" ng-click="dayChange(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid">Save</button>
-			<span class="saved pull-right"><fa name="check-square"></fa> Saved</span>
+			<button class="btn btn-primary pull-right" ng-click="dayChange(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid"><fa name="thumbs-up"></fa> Save</button>
 		</form>
 	</div>	
 </div>
