@@ -1,55 +1,38 @@
 ;(function() {
 	'use strict';
 	angular.module('dashboard')
-	.factory('authService', function authService(FIREBASE_URL, $q, firebaseService) {
+	.factory('authService', function authService(FIREBASE_URL, $q, firebaseService, $firebaseAuth) {
 
 		var service,
 			Firebase = firebaseService,
 			ref = new Firebase(FIREBASE_URL),
+			auth = $firebaseAuth(ref),
 			user = {};
 
 		function login(email, password) {
-			var deferred = $q.defer();
-
-			ref.authWithPassword({
+			return auth.$authWithPassword({
 				email: email,
 				password: password
-			}, function(err) {
-				if(err) {
-					deferred.reject(err);
-				} else {
-					deferred.resolve('Logged in');
-				}
 			});
-
-			return deferred.promise;
 		}
 
 		function logout() {
-			ref.unauth();
+			auth.$unauth();
 		}
 
 		function signedIn() {
-			if(user.provider) {
-				return true;
-			} else {
-				return false;
-			}
+			return auth.$requireAuth();
 		}
 
-		//catch auth
-		ref.onAuth(function(authObj) {
-			if(authObj) {
-				angular.copy(authObj, user);
-			} else {
-				angular.copy({}, user);
-			}
-		});
+		function waitForAuth() {
+			return auth.$waitForAuth();
+		}
 
 		service = {
 			login: login,
 			logout: logout,
 			signedIn: signedIn,
+			waitForAuth: waitForAuth,
 			user: user
 		};
 

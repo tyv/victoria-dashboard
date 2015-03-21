@@ -14,6 +14,7 @@
 				$state.go('dashboard');
 			})
 			.catch(function(msg) {
+				vm.loading = false;
 				console.log(msg);
 			});
 		};

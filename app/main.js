@@ -8,11 +8,24 @@
 		$locationProvider.html5Mode(true);
 		$urlRouterProvider.otherwise('/');
 
+		var checkAuth = {
+			currentAuth: function(authService) {
+				return authService.signedIn();
+			}
+		};
+
+		var waitForAuth = {
+			currentAuth: function(authService) {
+				return authService.waitForAuth();
+			}
+		};
+
 		$stateProvider
 			.state('login', {
 				url: '/login',
 				templateUrl: 'views/login.html',
-				controller: 'loginCtrl as login'
+				controller: 'loginCtrl as login',
+				resolve: waitForAuth
 			})
 			.state('logout', {
 				controller: 'logoutCtrl'
@@ -20,23 +33,20 @@
 			.state('dashboard', {
 				url: '/',
 				templateUrl: 'views/dashboard.html',
-				controller: 'dashboardCtrl as dashboard'
+				controller: 'dashboardCtrl as dashboard',
+				resolve: checkAuth
 			})
 			.state('admin', {
 				url: '/admin',
 				templateUrl: 'views/admin.html',
-				controller: 'adminCtrl as admin'
+				controller: 'adminCtrl as admin',
+				resolve: checkAuth
 			});
 	})
-	.run(function($rootScope, authService, $location) {
-		$rootScope.$on('$stateChangeStart', function (ev, to) {
-			if(to.name === 'dashboard' || to.name === 'admin') {
-				if(!authService.signedIn()) {
-					$location.path('/login');
-				}
-			}
-			if(to.name === 'login' && authService.signedIn()) {
-				$location.path('/dashboard');
+	.run(function($rootScope, $state) {
+		$rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+			if(error === 'AUTH_REQUIRED') {
+				return $state.go('login');
 			}
 		});
 	});
