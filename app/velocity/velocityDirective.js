@@ -26,15 +26,15 @@
 			width = scope.width - margin.left - margin.right;
 			height = scope.height - margin.top - margin.bottom;
 
-			svg = d3.select(vis)
+			scope.render = function(data) {
+
+				svg = d3.select(vis)
 					.append('svg')
 					.attr('class', 'burndown-vis')
 					.attr('width', width + margin.left + margin.right)
 					.attr('height', height + margin.top + margin.bottom)
 					.append('g')
 					.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-			scope.render = function(data) {
 
 				var sortedData = sortData(data);
 
@@ -77,6 +77,10 @@
 			scope.data.$loaded(function() {
 				scope.$watch('data', function(newValue) {
 					if(newValue) {
+						if(!scope.data.velocities || scope.data.velocities.length < 2) {
+							scope.nodata = true;
+							return;
+						}
 						scope.render(scope.data.velocities);
 					}
 				}, true);

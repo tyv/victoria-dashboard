@@ -1,9 +1,14 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
 </header>
-<div class="total clearfix">
+<div class="total clearfix" ng-if="!nodata">
 	<div class="current pull-right">
 		{{data.currentVelocity.score}}
 	</div>
 </div>
-<div class="vis clearfix"></div>
+<div class="vis clearfix">
+	<div class="no-data" ng-if="nodata">
+		<fa name="line-chart" class="icon"></fa>
+		Not enought data to render graph
+	</div>
+</div>

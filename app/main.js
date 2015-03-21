@@ -2,7 +2,8 @@
 	'use strict';
 
 	angular.module('dashboard', ['ui.router', 'firebase', 'picardy.fontawesome'])
-	.constant('FIREBASE_URL', 'https://victoria-dashboard.firebaseio.com/')
+	.constant('FIREBASE_URL', 'https://test-victoria-dashbo.firebaseio.com/')
+	// .constant('FIREBASE_URL', 'https://victoria-dashboard.firebaseio.com/')
 	.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
 		$locationProvider.html5Mode(true);

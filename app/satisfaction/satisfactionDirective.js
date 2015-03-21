@@ -51,21 +51,22 @@
 			height = scope.height - margin.top - margin.bottom;
 			radius = width / 2;
 
-			svg = d3.select(vis)
-					.append('svg')
-					.attr('class', 'satisfaction-vis')
-					.attr('width', width + margin.left + margin.right)
-					.attr('height', height + margin.top + margin.bottom)
-					.append('g')
-					.attr('transform', 'translate(' + scope.width / 2 + ',' + height + ')');
-
 			scope.render = function render(){
+
 				var startPadRad,
 					endPadRad,
 					arc,
 					needle,
 					thetaRad,
 					totalPercent = 0.75; //270deg
+
+				svg = d3.select(vis)
+						.append('svg')
+						.attr('class', 'satisfaction-vis')
+						.attr('width', width + margin.left + margin.right)
+						.attr('height', height + margin.top + margin.bottom)
+						.append('g')
+						.attr('transform', 'translate(' + scope.width / 2 + ',' + height + ')');
 
 				needle = function needle() {
 					var halfCircle,
@@ -170,6 +171,10 @@
 			scope.data.$loaded(function() {
 				scope.$watch('data', function(newValue) {
 					if(newValue) {
+						if(!scope.data.currentSatisfaction) {
+							scope.nodata = true;
+							return;
+						}
 						perc = scope.data.currentSatisfaction / 100;
 						//Evaluate change
 						evaluateChange();

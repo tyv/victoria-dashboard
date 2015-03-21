@@ -41,6 +41,17 @@
 			min-height: 330px;
 		}
 	}
+
+	.no-data {
+		text-align: center;
+		position: relative;
+		margin-top: 80px;
+		color: lighten($block-grey, 15%);
+		.icon{
+			font-size: 8rem;
+			display: block;
+		}
+	}
 }
 
 @media (max-width: 1200px) {

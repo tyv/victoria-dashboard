@@ -7,58 +7,69 @@
 			adjustData;
 
 		linker = function linker(scope, element) {
-			var d3 = d3Service,
-				svg,
-				margin,
-				width,
-				height,
-				graphWidth,
-				vis,
-				moment = momentService;
+				var d3 = d3Service,
+					svg,
+					margin,
+					width,
+					height,
+					graphWidth,
+					vis,
+					moment = momentService;
 
-			margin = {
-				top: 20,
-				right: 20,
-				bottom: 30,
-				left: 40
-			};
+				margin = {
+					top: 20,
+					right: 20,
+					bottom: 30,
+					left: 40
+				};
 
-			vis = element[0].querySelector('.vis');
-			width = scope.width - margin.left - margin.right;
-			height = scope.height - margin.top - margin.bottom;
-			graphWidth = width - 250;
+				vis = element[0].querySelector('.vis');
+				width = scope.width - margin.left - margin.right;
+				height = scope.height - margin.top - margin.bottom;
+				graphWidth = width - 250;
 
-			svg = d3.select(vis)
-					.append('svg')
-					.attr('class', 'burndown-vis')
-					.attr('width', width + margin.left + margin.right)
-					.attr('height', height + margin.top + margin.bottom)
-					.append('g')
-					.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 			scope.render = function(data) {
+
+				var filteredDays,
+					startDate,
+					endDate,
+					x,
+					y,
+					xAxis,
+					yAxis,
+					line;
+
+				svg = d3.select(vis)
+						.append('svg')
+						.attr('class', 'burndown-vis')
+						.attr('width', width + margin.left + margin.right)
+						.attr('height', height + margin.top + margin.bottom)
+						.append('g')
+						.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 				//remove the empty values
-				var filteredDays = adjustData(data.days, data.goal);
+				//
+				filteredDays = adjustData(data.days, data.goal);
 
-				var startDate = new Date(moment(data.startDate).subtract(1, 'days').format());
-				var endDate = new Date(data.endDate);
+				startDate = new Date(moment(data.startDate).subtract(1, 'days').format());
+				endDate = new Date(data.endDate);
 
-				var x = d3.time.scale()
+				x = d3.time.scale()
 					.domain([startDate, endDate])
 					.range([0, graphWidth]);
 
-				var y = d3.scale.linear()
+				y = d3.scale.linear()
 						.domain([0, data.goal])
 						.range([height, 0]);
 
 				// Define the axes
-				var xAxis = d3.svg.axis().scale(x)
+				xAxis = d3.svg.axis().scale(x)
 				    .orient('bottom').ticks(filteredDays.length);
 
-				var yAxis = d3.svg.axis().scale(y)
+				yAxis = d3.svg.axis().scale(y)
 					    .orient('left').ticks(5);
 
-				var line = d3.svg.line()
+				line = d3.svg.line()
 					.x(function(d) { 
 						return x(new Date(d.date));
 					})
@@ -110,6 +121,10 @@
 			//only render after we have the data
 			scope.data.$loaded(function() {
 				scope.$watch('data', function(newValue) {
+					if(!scope.data.days) {
+						scope.nodata = true;
+						return;
+					}
 					if(newValue) {
 						scope.render(scope.data);
 					}

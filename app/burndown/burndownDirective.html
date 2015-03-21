@@ -1,4 +1,9 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
 </header>
-<div class="vis"></div>
+<div class="vis">
+	<div class="no-data" ng-if="nodata">
+		<fa name="line-chart" class="icon"></fa>
+		Not enought data to render graph
+	</div>
+</div>

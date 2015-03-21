@@ -2,7 +2,7 @@
 	<div ng-transclude class="pull-left"></div>
 </header>
 <div class="vis clearfix">
-	<div class="total">
+	<div class="total" ng-if="data.score">
 		{{data.score}}
 	</div>
 	<ul>
@@ -13,4 +13,8 @@
 			</div>
 		</li>
 	</ul>
+	<div class="no-data" ng-if="!data.customers">
+		<fa name="list-ul" class="icon"></fa>
+		No customers
+	</div>
 </div>
