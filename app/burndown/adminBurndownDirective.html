@@ -1,6 +1,6 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
-	<div class="pull-right">{{data.remaining}}/{{data.goal}}</div>
+	<div class="pull-right" ng-if="data.goal">{{data.remaining}}/{{data.goal}}</div>
 </header>
 <div class="clearfix">
 	<div class="col-md-12">

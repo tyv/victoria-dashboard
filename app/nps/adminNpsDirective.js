@@ -47,6 +47,7 @@
 					score: $scope.score,
 					name: $scope.name
 				});
+				$scope.data.score = calculateTotal();
 				$scope.data.$save();
 				$scope.name = '';
 				$scope.score = '';
