@@ -2,9 +2,10 @@
 	'use strict';
 
 	angular.module('dashboard')
-	.directive('adminVelocity', function(momentService) {
+	.directive('adminVelocity', function(momentService, notifyService) {
 		var controller,
-			moment = momentService;
+			moment = momentService,
+			notify = notifyService;
 
 		controller = function controller($scope) {
 
@@ -14,7 +15,7 @@
 			calculateCurrent = function calculateCurrent() {
 				var newest = '1977-01-01',
 					currentDate,
-					currentVelocity;
+					currentVelocity = 0;
 
 				$scope.data.velocities.forEach(function(velocity) {
 					currentDate = moment(velocity.date);
@@ -30,10 +31,10 @@
 				$scope.data.currentVelocity = calculateCurrent();
 				$scope.data.$save()
 				.then(function() {
-					console.log('saved');
+					notify.success('Saved');
 				})
-				.catch(function(e) {
-					console.log(e);
+				.catch(function() {
+					notify.alert('Error saving!');
 				});
 			};
 

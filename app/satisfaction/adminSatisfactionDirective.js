@@ -2,12 +2,21 @@
 	'use strict';
 
 	angular.module('dashboard')
-	.directive('adminSatisfaction', function() {
-		var controller;
+	.directive('adminSatisfaction', function(notifyService) {
+		var controller,
+			notify = notifyService;
 
 		controller = function controller($scope) {
 			$scope.save = function save() {
-				$scope.data.$save();
+				if($scope.satisfaction.$dirty) {
+					$scope.data.$save()
+					.then(function() {
+						notify.success('Saved');
+					})
+					.catch(function() {
+						notify.alert('Error saving!');
+					});
+				}
 			};
 		};
 

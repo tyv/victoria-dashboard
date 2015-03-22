@@ -2,8 +2,9 @@
 	'use strict';
 
 	angular.module('dashboard')
-	.directive('adminNps', function($q) {
-		var controller;
+	.directive('adminNps', function($q, notifyService) {
+		var controller,
+			notify = notifyService;
 
 		controller = function controller($scope) {
 
@@ -32,10 +33,7 @@
 						return customer !== item;
 				});
 				
-				$scope.data.$save()
-				.then(function() {
-					console.log('saved');
-				});
+				$scope.data.$save();
 			};
 			
 
@@ -55,8 +53,16 @@
 
 			$scope.save = function save() {
 				if($scope.customers.$dirty) {
-					$scope.data.score = calculateTotal();
-					$scope.data.$save();
+					if($scope.data.customers) {
+						$scope.data.score = calculateTotal();
+					}
+					$scope.data.$save()
+					.then(function() {
+						notify.success('Saved');
+					})
+					.catch(function() {
+						notify.alert('Error saving!');
+					});
 				}
 			};
 

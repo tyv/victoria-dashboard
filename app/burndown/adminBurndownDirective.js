@@ -2,8 +2,9 @@
 	'use strict';
 
 	angular.module('dashboard')
-	.directive('adminBurndown', function(momentService) {
-		var controller;
+	.directive('adminBurndown', function(momentService, notifyService) {
+		var controller,
+			notify = notifyService;
 
 		controller = function controller($scope) {
 			var moment = momentService,
@@ -37,13 +38,15 @@
 			};
 
 			saveData = function saveData() {
-				$scope.data.remaining = calculateRemaining();
+				if($scope.data.days) {
+					$scope.data.remaining = calculateRemaining();
+				}
 				$scope.data.$save()
 				.then(function() {
-					console.log('saved');
+					notify.success('Saved');
 				})
 				.catch(function() {
-					console.log('problem saving the data');
+					notify.alert('Error saving!');
 				});
 			};
 

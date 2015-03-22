@@ -2,8 +2,9 @@
 	'use strict';
 
 	angular.module('dashboard')
-	.directive('adminTodo', function($q) {
-		var controller;
+	.directive('adminTodo', function($q, notifyService) {
+		var controller,
+			notify = notifyService;
 
 		controller = function controller($scope) {
 			
@@ -24,10 +25,10 @@
 
 					$q.all(promises)
 					.then(function() {
-						console.log('saved');
+						notify.success('Saved');
 					})
-					.catch(function(e) {
-						console.log(e);
+					.catch(function() {
+						notify.alert('Error saving!');
 					});
 				}	
 			};

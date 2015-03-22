@@ -1,6 +1,6 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
-	<div class="pull-right" ng-if="data.goal">{{data.remaining}}/{{data.goal}}</div>
+	<div class="pull-right" ng-if="data.remaining">{{data.remaining}}/{{data.goal}}</div>
 </header>
 <div class="clearfix">
 	<div class="col-md-12">
@@ -19,7 +19,7 @@
 					<input type="number" class="form-control" name="goal" ng-model="data.goal" min="1" placeholder="goal" required>
 				</div>				
 				<div class="col-4">
-					<button class="btn btn-success add-btn" ng-click="newBurndown()" ng-disabled="burndownDates.$invalid">Add</button>
+					<button class="btn btn-success add-btn" ng-click="newBurndown()" ng-disabled="burndownDates.$invalid">New</button>
 				</div>
 			</div>
 		</form>
@@ -39,7 +39,8 @@
 					</div>
 				</ng-form>
 			</div>
-			<button class="btn btn-primary pull-right" ng-click="dayChange(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid"><fa name="thumbs-up"></fa> Save</button>
+			<div class="pull-left saved"><fa name="thumbs-up"></fa>  Saved</div>
+			<button class="btn btn-primary pull-right" ng-click="dayChange(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid"> Save</button>
 		</form>
 	</div>	
 </div>
