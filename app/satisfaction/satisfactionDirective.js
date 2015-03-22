@@ -60,6 +60,11 @@
 					thetaRad,
 					totalPercent = 0.75; //270deg
 
+				//Remove any old svg
+				d3.select(vis)
+					.selectAll('svg')
+					.remove();
+
 				svg = d3.select(vis)
 						.append('svg')
 						.attr('class', 'satisfaction-vis')

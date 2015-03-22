@@ -28,6 +28,11 @@
 
 			scope.render = function(data) {
 
+				//Remove any old svg
+				d3.select(vis)
+					.selectAll('svg')
+					.remove();
+
 				svg = d3.select(vis)
 					.append('svg')
 					.attr('class', 'burndown-vis')

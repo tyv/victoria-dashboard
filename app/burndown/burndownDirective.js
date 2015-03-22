@@ -40,6 +40,11 @@
 					yAxis,
 					line;
 
+				//Remove any old svg
+				d3.select(vis)
+					.selectAll('svg')
+					.remove();
+
 				svg = d3.select(vis)
 						.append('svg')
 						.attr('class', 'burndown-vis')
@@ -48,7 +53,6 @@
 						.append('g')
 						.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 				//remove the empty values
-				//
 				filteredDays = adjustData(data.days, data.goal);
 
 				startDate = new Date(moment(data.startDate).subtract(1, 'days').format());
@@ -120,7 +124,7 @@
 
 			//only render after we have the data
 			scope.data.$loaded(function() {
-				scope.$watch('data', function(newValue) {
+				scope.$watch('data.days', function(newValue) {
 					if(!scope.data.days) {
 						scope.nodata = true;
 						return;
