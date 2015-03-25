@@ -24,8 +24,6 @@
             'bower_components/firebase/firebase.js',
             'bower_components/moment/moment.js',
             'node_modules/angularfire/dist/angularfire.js',
-            'bower_components/angular-animate/angular-animate.js',
-            'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
             'bower_components/angular-fontawesome/dist/angular-fontawesome.js',
             'app/main.js',
             'app/**/*.js'
@@ -39,7 +37,7 @@
         
 
     // Default task to be run with `gulp`
-    gulp.task('default', ['views', 'styles', 'js', 'browser-sync'], function () {
+    gulp.task('default', ['fonts', 'views', 'styles', 'js', 'browser-sync'], function () {
         gulp.watch(['app/main.js', 'app/**/*.js'], ['js']);
             // Watch our scss files
             gulp.watch(['app/main.scss', 'app/**/*.scss'], [
@@ -49,6 +47,12 @@
             gulp.watch(['app/index.html', 'app/**/*.html'], [
                 'views'
             ]);
+    });
+
+    gulp.task('fonts', function() {
+        //copy fonts
+        gulp.src('bower_components/font-awesome/fonts/*')
+        .pipe(gulp.dest('public/fonts/'));
     });
 
     // browser-sync task for starting the server.
