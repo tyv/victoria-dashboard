@@ -26,7 +26,7 @@
 				vis = element[0].querySelector('.vis');
 				width = scope.width - margin.left - margin.right;
 				height = scope.height - margin.top - margin.bottom;
-				graphWidth = width - 250;
+				graphWidth = width;
 
 
 			scope.render = function(data) {
@@ -115,11 +115,11 @@
 					.attr('cy', function(d) { return y(d.remaining); });
 
 				//Add overview
-				svg.append('text')
-					.attr('x', graphWidth + 70)
-					.attr('y', 30 + margin.top)
-					.attr('class', 'title')
-					.text(data.remaining + '/' + data.goal);
+				// svg.append('text')
+				// 	.attr('x', graphWidth + 70)
+				// 	.attr('y', 30 + margin.top)
+				// 	.attr('class', 'title')
+				// 	.text(data.remaining + '/' + data.goal);
 			};
 
 			//only render after we have the data
