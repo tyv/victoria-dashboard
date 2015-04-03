@@ -2,6 +2,9 @@
 	<div ng-transclude class="pull-left"></div>
 </header>
 <div class="total clearfix" ng-if="!nodata">
+	<div class="average pull-left">
+		Av: {{data.averageVelocity}}
+	</div>
 	<div class="current pull-right">
 		{{data.currentVelocity.score}}
 	</div>

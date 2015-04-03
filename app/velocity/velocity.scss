@@ -69,12 +69,20 @@
 
 .dashboard-container {
 	.velocity {
+		.total {
+			padding: 0 10px;
+		}
 		.current {
 			font-size: 5rem;
 			margin-top: 12px;
 			font-weight: bold;
 			line-height: 5rem;
-			padding: 0 10px;
+		}
+
+		.average {
+			color: $green;
+			font-size: 3rem;
+			margin-top: 12px;
 		}
 
 		.vis {
@@ -88,4 +96,6 @@
 			}
 		}
 	}
+
+	
 }

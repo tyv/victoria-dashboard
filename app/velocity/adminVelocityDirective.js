@@ -10,7 +10,8 @@
 		controller = function controller($scope) {
 
 			var saveData,
-				calculateCurrent;
+				calculateCurrent,
+				calculateAverage;
 
 			calculateCurrent = function calculateCurrent() {
 				var newest = '1977-01-01',
@@ -27,8 +28,21 @@
 				return currentVelocity;
 			};
 
+			calculateAverage = function calculateAverage() {
+				var amt,
+					total,
+					average;
+				amt = $scope.data.velocities.length;
+				total = $scope.data.velocities.reduce(function(a, b) {
+					return a.score + b.score;
+				});
+				average = total / amt;
+				return Math.floor(average);
+			};
+
 			saveData = function saveData() {
 				$scope.data.currentVelocity = calculateCurrent();
+				$scope.data.averageVelocity = calculateAverage();
 				$scope.data.$save()
 				.then(function() {
 					notify.success('Saved');
