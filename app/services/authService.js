@@ -1,7 +1,7 @@
 ;(function() {
 	'use strict';
 	angular.module('dashboard')
-	.factory('authService', function authService(FIREBASE_URL, $q, firebaseService, $firebaseAuth) {
+	.factory('authService', function authService(FIREBASE_URL, $q, firebaseService, $firebaseAuth, dataService) {
 
 		var service,
 			Firebase = firebaseService,
@@ -9,7 +9,10 @@
 			auth = $firebaseAuth(ref),
 			user = {};
 
+			window.auth = auth;
+
 		function login(email, password) {
+			
 			return auth.$authWithPassword({
 				email: email,
 				password: password
@@ -17,6 +20,7 @@
 		}
 
 		function logout() {
+			dataService.destroy();
 			auth.$unauth();
 		}
 

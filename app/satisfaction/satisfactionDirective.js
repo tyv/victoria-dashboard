@@ -125,8 +125,6 @@
 						.startAngle(arcStartRad + startPadRad)
 						.endAngle(arcEndRad - endPadRad);
 
-						console.log(totalPercent);
-
 					svg.append('path')
 						.attr('class', 'arc chart-color-'+i)
 						.attr('d', arc);

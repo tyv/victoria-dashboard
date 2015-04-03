@@ -6,7 +6,7 @@
 	.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
 		$locationProvider.html5Mode(true);
-		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.otherwise('/404');
 
 		var checkAuth = {
 			currentAuth: function(authService) {
@@ -41,6 +41,10 @@
 				templateUrl: 'views/admin.html',
 				controller: 'adminCtrl as admin',
 				resolve: checkAuth
+			})
+			.state('error', {
+				url: '/404',
+				templateUrl: 'views/404.html'
 			});
 	})
 	.run(function($rootScope, $state) {
