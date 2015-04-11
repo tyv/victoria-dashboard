@@ -32,10 +32,22 @@
 				var amt,
 					total,
 					average;
+
 				amt = $scope.data.velocities.length;
-				total = $scope.data.velocities.reduce(function(a, b) {
-					return a.score + b.score;
-				});
+
+				if(amt === 0) {
+					return 0;
+				} else if(amt === 1) {
+					total = $scope.data.velocities[0].score;
+				} else {
+					total = $scope.data.velocities
+					.map(function(velocity) {
+						return velocity.score;
+					})
+					.reduce(function(a, b) {
+						return a + b;
+					});
+				}
 				average = total / amt;
 				return Math.floor(average);
 			};

@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('dashboard')
-	.directive('burndown', function(d3Service, momentService) {
+	.directive('burndown', function(d3Service) {
 		var linker,
 			adjustData;
 
@@ -13,8 +13,7 @@
 					width,
 					height,
 					graphWidth,
-					vis,
-					moment = momentService;
+					vis;
 
 				margin = {
 					top: 20,
@@ -32,8 +31,6 @@
 			scope.render = function(data) {
 
 				var filteredDays,
-					startDate,
-					endDate,
 					x,
 					y,
 					xAxis,
@@ -55,11 +52,9 @@
 				//remove the empty values
 				filteredDays = adjustData(data.days, data.goal);
 
-				startDate = new Date(moment(data.startDate).subtract(1, 'days').format());
-				endDate = new Date(data.endDate);
 
 				x = d3.time.scale()
-					.domain([startDate, endDate])
+					.domain([0, data.numDays])
 					.range([0, graphWidth]);
 
 				y = d3.scale.linear()
@@ -75,7 +70,7 @@
 
 				line = d3.svg.line()
 					.x(function(d) { 
-						return x(new Date(d.date));
+						return x(d.num);
 					})
 					.y(function(d) { 
 						return y(d.remaining);
@@ -97,7 +92,7 @@
 
 				//Add ideal line
 				svg.append('path')
-				.attr('d', line([{date: startDate, remaining: data.goal}, {date: endDate, remaining: 0}]))
+				.attr('d', line([{num: 0, remaining: data.goal}, {num: data.numDays, remaining: 0}]))
 				.attr('class', 'ideal-line');
 				
 				//Add burndown
@@ -111,15 +106,8 @@
 					.enter().append('circle')
 					.attr('class', 'burndown-dots')
 					.attr('r', 5)
-					.attr('cx', function(d) { return x(new Date(d.date)); })
+					.attr('cx', function(d) { return x(d.num); })
 					.attr('cy', function(d) { return y(d.remaining); });
-
-				//Add overview
-				// svg.append('text')
-				// 	.attr('x', graphWidth + 70)
-				// 	.attr('y', 30 + margin.top)
-				// 	.attr('class', 'title')
-				// 	.text(data.remaining + '/' + data.goal);
 			};
 
 			//only render after we have the data

@@ -12,6 +12,10 @@ describe('adminBurndown', function() {
 		beforeEach(function() {
 			module('dashboard');
 			module('views/adminBurndownDirective.html');
+			module('views/burndownDirective.html');
+			module('views/dashboard.html');
+			module('views/login.html');
+			// module('templates');
 
 			inject(function($rootScope, $compile) {
 		        scope = $rootScope;
@@ -42,7 +46,7 @@ describe('adminBurndown', function() {
 
 
 	it('should build a graph', function() {
-		console.log(dscope.burndownData);
+		//console.log(dscope.burndownData);
 	});
 
 });

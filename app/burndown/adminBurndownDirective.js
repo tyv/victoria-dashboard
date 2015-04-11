@@ -8,18 +8,11 @@
 
 		controller = function controller($scope) {
 			var createNewDaysGroup,
-				endDateIsBeforeStartDate,
 				saveData,
 				checkGoal,
 				updateDays,
 				createDays,
 				calculateRemaining;
-
-			$scope.dateChange = function dateChange() {
-				if(endDateIsBeforeStartDate()) {
-					$scope.data.endDate = null;
-				}
-			};
 
 			$scope.newBurndown = function newBurndown() {
 				//create new days
