@@ -38,11 +38,11 @@
 			};
 
 			numSections = 4;
-			barWidth = 15;
+			barWidth = 10;
 			sectionPerc = 1 / numSections / 2;
 			padRad = 0.05;
 			chartInset = 10;
-			needleLength = 100;
+			needleLength = 120;
 			needleRadius = 10;
 
 			vis = element[0].querySelector('.vis');
