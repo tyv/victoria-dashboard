@@ -41,7 +41,6 @@
 			barWidth = 15;
 			sectionPerc = 1 / numSections / 2;
 			padRad = 0.05;
-			// totalPercent = 0.75; //270deg
 			chartInset = 10;
 			needleLength = 100;
 			needleRadius = 10;
