@@ -1,25 +1,21 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
-	<div class="pull-right" ng-if="data.remaining">{{data.remaining}}/{{data.goal}}</div>
+	<div class="pull-right">{{data.remaining}}/{{data.goal}}</div>
 </header>
 <div class="clearfix">
 	<div class="col-md-12">
-		<form name="burndownDates" novalidate>
+		<form name="newBurndownDays" novalidate>
 			<div class="form-group new">
 				<div class="col-1">
-					<label for="startDate">Start Date</label>
-					<input type="date" class="form-control" name="startDate" id="startDate" ng-model="data.startDate" placeholder="eg: 14/01/2015" ng-change="dateChange()" required>
+					<label for="numDays">Sprint length</label>
+					<input type="number" class="form-control" name="numDays" id="numDays" ng-model="data.numDays" placeholder="Number of sprint days" min="1" required>
 				</div>
 				<div class="col-2">
-					<label for="endDate">End Date</label>
-					<input type="date" class="form-control" name="endDate" id="endDate" ng-model="data.endDate" min="{{data.startDate}}" placeholder="eg: 28/01/2015" ng-change="dateChange()" required>
-				</div>
-				<div class="col-3">
 					<label for="goal">Goal</label>
-					<input type="number" class="form-control" name="goal" ng-model="data.goal" min="1" placeholder="goal" required>
+					<input type="number" class="form-control" name="goal" ng-model="data.goal" min="0" placeholder="goal" required>
 				</div>				
-				<div class="col-4">
-					<button class="btn btn-success add-btn" ng-click="newBurndown()" ng-disabled="burndownDates.$invalid">New</button>
+				<div class="col-3">
+					<button class="btn btn-success add-btn" ng-click="newBurndown()" ng-disabled="newBurndownDays.$invalid">New</button>
 				</div>
 			</div>
 		</form>
@@ -30,17 +26,16 @@
 			<div class="form-group" ng-repeat="day in data.days">
 				<ng-form name="formDays" ng-if="day.editable">
 					<div class="row">
-						<div class="col-md-6">
-							<label><span class="lighten">{{day.date}} - </span>Day {{day.num}} {{day.name}}:</label>
+						<div class="col-md-9">
+							<label><span class="lighten">Day {{day.num}}:</label>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<input type="number" class="form-control" min="0" ng-model="day.qty" ng-change="updateTotal()">
 						</div>
 					</div>
 				</ng-form>
 			</div>
-			<div class="pull-left saved"><fa name="thumbs-up"></fa>  Saved</div>
-			<button class="btn btn-primary pull-right" ng-click="dayChange(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid"> Save</button>
+			<button class="btn btn-primary pull-right" ng-if="data.days" ng-click="save(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid"><fa name="thumbs-up"></fa> Save</button>
 		</form>
 	</div>	
 </div>

@@ -7,12 +7,12 @@
 			notify = notifyService;
 
 		controller = function controller($scope) {
-			var moment = momentService,
-				createDays,
+			var createNewDaysGroup,
 				endDateIsBeforeStartDate,
-				numberOfDaysInSprint,
 				saveData,
-				getNameOfDay,
+				checkGoal,
+				updateDays,
+				createDays,
 				calculateRemaining;
 
 			$scope.dateChange = function dateChange() {
@@ -22,25 +22,25 @@
 			};
 
 			$scope.newBurndown = function newBurndown() {
-				var diff = numberOfDaysInSprint();
-
 				//create new days
-				$scope.data.days = createDays(diff);
-				saveData();
-			};
-
-			$scope.dayChange = function dayChange() {
+				$scope.data.days = createNewDaysGroup($scope.data.numDays);
 				saveData();
 			};
 
 			$scope.updateTotal = function updateTotal() {
 				$scope.data.remaining = calculateRemaining();
+				$scope.data.goal = checkGoal();
 			};
 
-			saveData = function saveData() {
-				if($scope.data.days) {
-					$scope.data.remaining = calculateRemaining();
-				}
+			$scope.save = function save() {
+				saveData();
+			};
+
+			saveData = function save() {
+				$scope.data.goal = checkGoal();
+				$scope.data.days = updateDays();
+				$scope.data.remaining = calculateRemaining();
+
 				$scope.data.$save()
 				.then(function() {
 					notify.success('Saved');
@@ -52,58 +52,75 @@
 
 			calculateRemaining = function calculateRemaining() {
 				var total = 0;
+
 				$scope.data.days.forEach(function(day) {
 					total += day.qty;
 				});
 				return total;
 			};
 
-			createDays = function createDays(differenceInDays) {
-				var days = [],
-					i = 1,
-					num = differenceInDays + 2,
-					date;
+			createNewDaysGroup = function createNewDaysGroup(numDays) {
+				var days = [];
 
-				if(differenceInDays < 1) {
-					//Clear the days if the dates are the same
-					return [];
+				if(numDays < 1) {
+					//Clear the days if numDays is 0
+					return days;
 				}
 
 				days.push({
-					date: moment($scope.data.startDate).subtract(1, 'days').format('YYYY-MM-DD'),
 					qty: 0,
 					num: 0,
 					editable: false
 				});
 
-				for (; i < num; i++) {
-					//don't add weekends
-					date = moment(days[0].date).add(i, 'days');
-					if(date.day() !== 0 && date.day() !== 6) {
-						days.push({
-							date: date.format('YYYY-MM-DD'),
-							qty: '',
-							num: days.length,
-							editable: true,
-							name: getNameOfDay(date.day())
-						});
-					}
+				days = createDays(days, numDays);
+
+				return days;
+			};
+
+			createDays = function createDays(currentDaysArr, num) {
+				var days = currentDaysArr,
+					i = 0,
+					additional = parseInt(num) || 0;
+
+				if(!Array.isArray(days)) {
+					throw 'Need to pass in array as first argument';
+				}
+
+				for (; i < additional; i++) {
+					days.push({
+						qty: '',
+						num: days.length,
+						editable: true
+					});
 				}
 				return days;
 			};
 
-			numberOfDaysInSprint = function numberOfDaysInSprint() {
-				return Math.abs(moment($scope.data.startDate).diff($scope.data.endDate, 'days'));
+			updateDays = function updateDays(){
+				var diff,
+					days,
+					currentNumDays,
+					totalNumDays;
+
+				days = $scope.data.days,
+				currentNumDays = $scope.data.days.length,
+				totalNumDays = $scope.data.numDays + 1;
+
+				if(currentNumDays > totalNumDays) {
+					diff = currentNumDays - totalNumDays;
+					days = days.slice(0, totalNumDays);
+				} else if(currentNumDays < totalNumDays) {
+					diff = totalNumDays - currentNumDays;
+					days = createDays(days, diff);
+				}
+				return days;
 			};
 
-			endDateIsBeforeStartDate = function endDateIsBeforeStartDate() {
-				return moment($scope.data.endDate).isBefore($scope.data.startDate);
+			checkGoal = function checkGoal() {
+				return $scope.data.goal || 0;
 			};
 
-			getNameOfDay = function(num) {
-				var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-				return days[num];
-			};
 		};
 
 		return {

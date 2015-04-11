@@ -2,16 +2,16 @@
 	<div ng-transclude class="pull-left"></div>
 </header>
 <div class="vis pull-left">
-	<div class="no-data" ng-if="nodata">
-		<fa name="line-chart" class="icon"></fa>
-		Not enough data to render graph
-	</div>
 </div>
 <div class="current pull-right">
 	<div class="total" ng-if="!nodata">
 		{{data.remaining}} / {{data.goal}}
 	</div>
-	<div class="remaining">
+	<div class="remaining" ng-if="!nodata">
 		{{data.goal - data.remaining}}
 	</div>
+</div>
+<div class="no-data" ng-if="nodata">
+	<fa name="line-chart" class="icon"></fa>
+	Not enough data to render graph
 </div>
