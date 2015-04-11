@@ -43,6 +43,10 @@
 				color: #fff;
 			}
 		}
+
+		&.block header .error {
+			color: $red;
+		}
 	}
 }
 
