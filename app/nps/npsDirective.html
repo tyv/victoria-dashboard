@@ -1,11 +1,13 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
 </header>
-<div class="vis clearfix">
-	<div class="total" ng-if="data.score">
+<div class="totals" ng-if="data.score">
+	<div class="large">
 		{{data.score}}
 	</div>
-	<ul>
+</div>
+<div class="vis clearfix">
+	<ul class="items">
 		<li ng-repeat="customer in data.customers | orderBy: '-score'" class="score-{{customer.score}}">
 			<div class="li-inner">
 				<span class="name">{{customer.name}}</span>

@@ -1,68 +1,68 @@
 .admin-container {
 	.nps {
-		ul {
-			padding: 0;
-			margin: 0;
-		}
-		li {
-			list-style: none;
-			margin-bottom: 5px;
-			border-radius: $border-radius;
-			position: relative;
+		// ul {
+		// 	padding: 0;
+		// 	margin: 0;
+		// }
+		// li {
+		// 	list-style: none;
+		// 	margin-bottom: 5px;
+		// 	border-radius: $border-radius;
+		// 	position: relative;
 
-			&:last-child {
-				margin: 0;
-			}
-		}
-		.close-btn {
-			position: absolute;
-			right: 4px;
-			top: 4px;
-		}
+		// 	&:last-child {
+		// 		margin: 0;
+		// 	}
+		// }
+		// .close-btn {
+		// 	position: absolute;
+		// 	right: 4px;
+		// 	top: 4px;
+		// }
 
-		.new {
-			border-bottom: 3px solid $well-grey;
-			padding-bottom: 5px;
-			margin-bottom: 10px;
-		}
+		// .new {
+		// 	border-bottom: 3px solid $well-grey;
+		// 	padding-bottom: 5px;
+		// 	margin-bottom: 10px;
+		// }
 
-		.new-item, 
-		.customer {
-			display: flex;
-			margin-bottom: 5px;
+		// .new-item, 
+		// .customer {
+		// 	display: flex;
+		// 	margin-bottom: 5px;
 
-			.col-1, 
-			.col-2, 
-			.col-3 {
-				flex-grow: 1;
-			}
+		// 	.col-1, 
+		// 	.col-2, 
+		// 	.col-3 {
+		// 		flex-grow: 1;
+		// 	}
 
-			.col-2 {
-				margin: 0 10px;
-				max-width: 80px;
-			}
+		// 	.col-2 {
+		// 		margin: 0 10px;
+		// 		max-width: 80px;
+		// 	}
 
-			.col-3 {
-				text-align: right;
-				max-width: 60px;
-			}
+		// 	.col-3 {
+		// 		text-align: right;
+		// 		max-width: 60px;
+		// 	}
 
-			input {
-				width: 100%;
-				display: block;
-			}
-		}
+		// 	input {
+		// 		width: 100%;
+		// 		display: block;
+		// 	}
+		// }
 
-		.customer {
-			input {
-				color: #fff;
-				background: $well-grey; 
-			}
-		}
+		// .customer {
+		// 	input {
+		// 		color: #fff;
+		// 		background: $well-grey; 
+		// 	}
+		// }
 
-		.form-group {
-			margin-bottom: 5px;
-		}
+		// .form-group {
+		// 	margin-bottom: 5px;
+		// }
 
 	}
 }
@@ -86,26 +86,15 @@
 		.vis {
 			padding: 0 10px;
 		}
-		ul {
-			padding: 0;
-			margin: 0;
-		}
-		li {
-			list-style: none;
-			margin-bottom: 10px;
+
+		li {	
 			width: 50%;
-			float: left;
+
 			&:nth-child(even) {
 				padding-left: 5px;
 			}
 			&:nth-child(odd) {
 				padding-right: 5px;
-			}
-			.li-inner {
-				background: $well-grey;
-				padding: 10px;
-				border-radius: $border-radius;
-				height: 41px;
 			}
 			.name {
 				max-width: calc(100% - 19px);
@@ -113,13 +102,6 @@
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
-		}
-		.total {
-			font-size: 5rem;
-			line-height: 5rem;
-			font-weight: bold;
-			text-align: right;
-			margin-bottom: 20px;
 		}
 	}
 }

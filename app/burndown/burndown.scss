@@ -1,51 +1,17 @@
 .admin-container {
 	.burndown {
-		.new {
-			border-bottom: 3px solid $well-grey;
-			padding-bottom: 10px;
-			margin-bottom: 0;
-			display: flex;
-		}
-
-		.form-group {
-			margin-bottom: 5px;
-		}
-
-		.col-1, 
-		.col-2, 
-		.col-3 {
-			flex-grow: 1;
-		}
-
-		.col-2 {
-			margin: 0 10px;
-			max-width: 80px;
-		}
-
-		.col-3 {
-			max-width: 60px;
+		.top-form .col-3 {
 			padding-top: 26px;
-			text-align: right;
 		}
 
 		.days {
-			input {
-				color: #fff;
-				background: $well-grey;
-			}
-
 			label {
-				padding: 8px 0;
-				color: $green;
+				padding-top: 8px;
 			}
-
-			.lighten {
-				color: #fff;
+			input {
+				max-width: 60px;
+				text-align: right;
 			}
-		}
-
-		&.block header .error {
-			color: $red;
 		}
 	}
 }
@@ -54,19 +20,13 @@
 	.burndown {
 		min-height: 462px;
 
+		.totals {
+			.remaining {
+				text-align: right;
+			}
+		}
+
 		.vis {
-			.burndown-line {
-				fill: none;
-				stroke: $blue;
-				stroke-width: 3px;
-			}
-
-			.burnup-line {
-				fill: none;
-				stroke: lighten($block-grey, 10%);
-				stroke-width: 3px;
-			}
-
 			.ideal-line {
 				fill: none;
 				stroke: #fff;
@@ -74,54 +34,11 @@
 				opacity: 0.4;
 			}
 
-			.burndown-dots {
-				fill: $blue;
-			}
-
-			.burnup-dots { 
-				fill: lighten($block-grey, 10%);
-			}
-
 			.x-axis {
-				fill: none;
-				stroke: darken($block-grey, 5%);
-				stroke-width: 3px;
 				.tick {
 					display: none;
 				}
 			}
-
-			.y-axis {
-				fill: none;
-				stroke: darken($block-grey, 5%);
-				stroke-width: 3px;
-
-				text {
-					fill: #fff;
-					stroke: none;
-					opacity: 0.4;
-				}
-			}
-
-			.title {
-				fill: $blue;
-				font-size: 6rem;
-				font-weight: bold;
-			}
-		}
-		.total {
-			font-size: 5rem;
-			margin-top: 12px;
-			font-weight: bold;
-			line-height: 5rem;
-			padding: 0 10px;
-			text-align: right;
-		}
-		.remaining {
-			text-align: right;
-			padding: 10px;
-			font-size: 3rem;
-			color: $green;
 		}
 	}
 }

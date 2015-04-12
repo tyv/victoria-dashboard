@@ -1,6 +1,6 @@
 .admin-container {
 	.satisfaction {
-		.form-group {
+		.top-form-single {
 			margin-bottom: 5px;
 		}
 	}
@@ -11,7 +11,6 @@
 		.chart-color-1,
 		.needle,
 		.needle-center {
-			// fill: $blue;
 			fill: #fff;
 			stroke: none;
 		}
@@ -19,29 +18,10 @@
 			fill: $red;
 		}
 		.chart-color-2 {
-			// fill: darken($blue, 20%);
 			fill: #fff;
 		}
 		.chart-color-3 {
 			fill: $green;
-		}
-
-		.total {
-			padding: 0 10px;
-		}
-		.current {
-			font-size: 5rem;			
-			font-weight: bold;
-		}
-		.change {
-			font-size: 3rem;
-			margin-top: 12px;
-			&.positive {
-				color: $green;
-			}
-			&.negative {
-				color: $red;
-			}
 		}
 	}
 }

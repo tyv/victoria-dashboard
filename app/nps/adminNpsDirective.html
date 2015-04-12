@@ -4,37 +4,35 @@
 </header>
 <div class="clearfix">
 	<div class="col-md-12">
-		<form name="npsNew" class="form-inline new" novalidate>
-			<div class="form-group new-item">
-				<div class="col-1">
-					<input type="text" class="form-control" placeholder="Customer" ng-model="name" ng-minlength="1" required>
-				</div>
-				<div class="col-2">
-					<input type="number" class="form-control" placeholder="Score" ng-model="score" min="1" max="10" required>
-				</div>
-				<div class="col-3">
-					<button class="btn btn-success" ng-click="add()" ng-disabled="npsNew.$invalid">Add</button>
-				</div>
+		<form name="npsNew" class="top-form cols-3" novalidate>
+			<div class="col-1">
+				<input type="text" class="form-control" placeholder="Customer" ng-model="name" ng-minlength="1" required>
+			</div>
+			<div class="col-2">
+				<input type="number" class="form-control" placeholder="Score" ng-model="score" min="1" max="10" required>
+			</div>
+			<div class="col-3">
+				<button class="btn btn-success" ng-click="add()" ng-disabled="npsNew.$invalid">Add</button>
 			</div>
 		</form>
 		<form name="customers">
-			<ul class="form-group">
+			<ul class="form-group cols-3">
 				<li ng-repeat="customer in data.customers" class="customer">
 					<div class="col-1">
-						<input type="text" class="form-control" placeholder="Customer" ng-model="customer.name" ng-minlength="1" required>
+						<input type="text" class="form-control input-dark" placeholder="Customer" ng-model="customer.name" ng-minlength="1" required>
 					</div>
 					<div class="col-2">
-						<input type="number" class="form-control" placeholder="Score" ng-model="customer.score" min="1" max="10" required>
+						<input type="number" class="form-control input-dark" placeholder="Score" ng-model="customer.score" min="1" max="10" required>
 					</div>
 					<div class="col-3">
-						<a class="btn btn-default" ng-click="removeItem(customer)" title="Delete">
+						<a class="btn btn-default delete-btn" ng-click="removeItem(customer)" title="Delete">
 							<span><fa name="close"></fa></span>
 						</a>
 					</div>
 				</li>
 			</ul>
 			<div>
-				<button class="btn btn-primary pull-right" ng-click="save()" ng-disabled="customers.$invalid"><fa name="thumbs-up"></fa> Save</button>
+				<button class="btn btn-primary pull-right save-btn" ng-click="save()" ng-disabled="customers.$invalid"><fa name="thumbs-up"></fa> Save</button>
 			</div>
 		</form>
 	</div>

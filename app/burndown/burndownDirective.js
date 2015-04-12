@@ -98,13 +98,13 @@
 				//Add burndown
 				svg.append('path')
 				.attr('d', line(filteredDays))
-				.attr('class', 'burndown-line');
+				.attr('class', 'graph-line');
 
 				//Add circles to burndown
 				svg.selectAll('dot')
 					.data(filteredDays)
 					.enter().append('circle')
-					.attr('class', 'burndown-dots')
+					.attr('class', 'graph-dots')
 					.attr('r', 5)
 					.attr('cx', function(d) { return x(d.num); })
 					.attr('cy', function(d) { return y(d.remaining); });

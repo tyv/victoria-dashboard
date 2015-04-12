@@ -5,7 +5,7 @@
 <div class="clearfix">
 	<div class="col-md-12">
 		<form name="newBurndownDays" novalidate>
-			<div class="form-group new">
+			<div class="form-group top-form cols-3">
 				<div class="col-1">
 					<label for="numDays">Sprint length</label>
 					<input type="number" class="form-control" name="numDays" id="numDays" ng-model="data.numDays" placeholder="Number of sprint days" min="1" required>
@@ -30,12 +30,12 @@
 							<label><span class="lighten">Day {{day.num}}:</label>
 						</div>
 						<div class="col-md-3">
-							<input type="number" class="form-control" min="0" ng-model="day.qty" ng-change="updateTotal()">
+							<input type="number" class="form-control input-dark pull-right" min="0" ng-model="day.qty" ng-change="updateTotal()">
 						</div>
 					</div>
 				</ng-form>
 			</div>
-			<button class="btn btn-primary pull-right" ng-if="data.days" ng-click="save(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid"><fa name="thumbs-up"></fa> Save</button>
+			<button class="btn btn-primary pull-right save-btn" ng-if="data.days" ng-click="save(burndownDays.$vaild)" ng-disabled="burndownDays.$invalid"><fa name="thumbs-up"></fa> Save</button>
 		</form>
 	</div>	
 </div>

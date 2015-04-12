@@ -3,11 +3,11 @@
 </header>
 <div class="vis pull-left">
 </div>
-<div class="current pull-right">
-	<div class="total" ng-if="!nodata">
+<div class="totals pull-right">
+	<div class="large" ng-if="!nodata">
 		{{data.remaining}} / {{data.goal}}
 	</div>
-	<div class="remaining" ng-if="!nodata">
+	<div class="medium remaining" ng-if="!nodata">
 		{{data.goal - data.remaining}}
 	</div>
 </div>

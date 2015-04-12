@@ -65,13 +65,13 @@
 				//Add burndown
 				svg.append('path')
 				.attr('d', line(sortedData))
-				.attr('class', 'velocity');
+				.attr('class', 'graph-line');
 
 				//Add circles to burndown
 				svg.selectAll('dot')
 					.data(sortedData)
 					.enter().append('circle')
-					.attr('class', 'velocity-dots')
+					.attr('class', 'graph-dots')
 					.attr('r', 5)
 					.attr('cx', function(d) { return x(new Date(d.date)); })
 					.attr('cy', function(d) { return y(d.score); });

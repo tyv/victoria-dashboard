@@ -1,11 +1,11 @@
 <header class="clearfix">
 	<div ng-transclude class="pull-left"></div>
 </header>
-<div class="total clearfix">
-	<div class="change {{changeClass}} pull-left" ng-show="percentChange">
+<div class="totals clearfix">
+	<div class="medium {{changeClass}} pull-left" ng-show="percentChange">
 		{{percentChange}}% <span class="arrow"><fa name="play" rotate="{{rotation}}"></fa></span>
 	</div>
-	<div class="current pull-right">
+	<div class="large pull-right">
 		{{data.currentSatisfaction}}
 	</div>
 </div>

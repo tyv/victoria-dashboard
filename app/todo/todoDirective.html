@@ -2,9 +2,11 @@
 	<div ng-transclude class="pull-left"></div>
 </header>
 <div class="vis">
-	<ul>
+	<ul class="items">
 		<li ng-repeat="todo in data">
-			{{todo.$value}}
+			<div class="li-inner">
+				{{todo.$value}}
+			</div>
 		</li>
 	</ul>
 	<div class="no-data" ng-if="!data.length">

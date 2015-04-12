@@ -9,14 +9,53 @@
 			padding: 10px 15px;
 			background: $block-heading-grey;
 			font-size: 1.5rem;
-			margin-bottom: 10px;
 		}
 
 		h2 {
 			margin: 0;
 			font-size: 1.5rem;
 		}
+	}
 
+	.items {
+		padding: 0;
+		margin: 0;
+
+		li {
+			list-style: none;
+			margin-bottom: 10px;
+			float: left;
+			width: 100%;
+
+			.li-inner {
+				list-style: none;
+				background: $well-grey;
+				padding: 10px;
+				border-radius: $border-radius;
+				line-height: 1em;;
+			}
+		}
+	}
+
+	.totals {
+		margin-bottom: 20px;
+		padding: 10px;
+
+		.large {
+			font-size: 5rem;
+			line-height: 5rem;
+			font-weight: bold;
+			text-align: right;
+		}
+
+		.medium {
+			font-size: 3rem;
+			color: $green;
+		}
+
+		.negative {
+			color: $red;
+		}
 	}
 
 	.row-1,
@@ -27,11 +66,11 @@
 	.row-1 {
 		.burndown {
 			width: 770px;
-			min-height: 462px;
+			min-height: 450px;
 		}
 		.todo {
 			width: 380px;
-			min-height: 462px;
+			min-height: 450px;
 		}
 	}
 
@@ -50,6 +89,34 @@
 		.icon{
 			font-size: 8rem;
 			display: block;
+		}
+	}
+
+	.graph-line {
+		fill: none;
+		stroke: $blue;
+		stroke-width: 3px;
+	}
+
+	.graph-dots {
+		fill: $blue;
+	}
+
+	.x-axis {
+		fill: none;
+		stroke: darken($block-grey, 5%);
+		stroke-width: 3px;
+	}
+
+	.y-axis {
+		fill: none;
+		stroke: darken($block-grey, 5%);
+		stroke-width: 3px;
+
+		text {
+			fill: #fff;
+			stroke: none;
+			opacity: 0.4;
 		}
 	}
 }
