@@ -9,8 +9,6 @@
 			auth = $firebaseAuth(ref),
 			user = {};
 
-			window.auth = auth;
-
 		function login(email, password) {
 			
 			return auth.$authWithPassword({
