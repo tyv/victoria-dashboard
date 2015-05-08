@@ -5,20 +5,23 @@
 <div class="clearfix">
 	<div class="col-md-12">
 		<form name="todoNew" class="form-inline top-form cols-2" novalidate>
-			<input type="text" class="form-control col-1" placeholder="Add todo" ng-model="newTodo" ng-minlength="1" required>
+			<input type="text" class="form-control col-1" placeholder="Add todo" ng-model="newTask" ng-minlength="1" required>
 			<button class="btn btn-success add-btn" ng-click="add()" ng-disabled="todoNew.$invalid">Add</button>
 		</form>
 		<form name="todos">
 			<ul>
-				<li ng-repeat="todo in data" class="cols-2">
-					<input type="text" class="form-control col-1 input-dark" ng-model="todo.$value" ng-minlength="1" required>
+				<li ng-repeat="todo in data.todos" class="cols-2" ng-class="todo.done?'done':''">
+					<input type="text" class="form-control col-1 input-dark" ng-model="todo.task" ng-minlength="1" required>
+					<a class="btn check-btn btn-default " ng-click="toggleDone(todo)" title="Done">
+						<span><fa name="check"></fa></span>
+					</a>
 					<a class="btn delete-btn btn-default " ng-click="removeItem(todo)" title="Delete">
 						<span><fa name="close"></fa></span>
 					</a>
 				</li>
 			</ul>
 			<div>
-				<button class="btn btn-primary pull-right save-btn" ng-click="save()" ng-disabled="todos.$invalid"><fa name="thumbs-up"></fa> Save</button>
+				<button class="btn btn-primary pull-right save-btn" ng-click="save()" ng-disabled="todos.$invalid || !todos.$dirty"><fa name="thumbs-up"></fa> Save</button>
 			</div>
 		</form>
 	</div>

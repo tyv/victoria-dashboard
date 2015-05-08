@@ -3,13 +3,13 @@
 </header>
 <div class="vis">
 	<ul class="items">
-		<li ng-repeat="todo in data">
+		<li ng-repeat="todo in data.todos" ng-class="todo.done?'done':''">
 			<div class="li-inner">
-				{{todo.$value}}
+				{{todo.task}}
 			</div>
 		</li>
 	</ul>
-	<div class="no-data" ng-if="!data.length">
+	<div class="no-data" ng-if="!data.todos.length">
 		<fa name="tasks" class="icon"></fa>
 		No todo items
 	</div>

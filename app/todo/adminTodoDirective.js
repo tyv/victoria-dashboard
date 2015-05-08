@@ -9,28 +9,37 @@
 		controller = function controller($scope) {
 			
 			$scope.removeItem = function removeItem(item) {
-				$scope.data.$remove(item);	
+				$scope.data.todos = $scope.data.todos.filter(function(value){
+					return value.$$hashKey !== item.$$hashKey;
+				});
+				$scope.data.$save();
+			};
+
+			$scope.toggleDone = function toggleDone(item) {
+				$scope.data.todos.forEach(function(currentValue){
+					if(currentValue.$$hashKey === item.$$hashKey){
+						currentValue.done = !currentValue.done;
+					}
+				});
+				$scope.data.$save();
 			};
 
 			$scope.add = function add() {
-				$scope.data.$add($scope.newTodo);
-				$scope.newTodo = '';
+				if(!$scope.data.todos) {
+					$scope.data.todos = [];
+				}
+				$scope.data.todos.push({
+					task: $scope.newTask,
+					done: false
+				});
+				$scope.data.$save();
+				$scope.newTask = '';
 			};
 
 			$scope.save = function save() {
 				if($scope.todos.$dirty) {
-					var promises = $scope.data.map(function(item) {
-						return $scope.data.$save(item);
-					});
-
-					$q.all(promises)
-					.then(function() {
-						notify.success('Saved');
-					})
-					.catch(function() {
-						notify.alert('Error saving!');
-					});
-				}	
+					$scope.data.$save();
+				}
 			};
 
 		};
