@@ -47,7 +47,9 @@
 				var total = 0;
 
 				$scope.data.days.forEach(function(day) {
-					total += day.qty;
+					if(typeof day.qty === 'number') {
+						total += day.qty;
+					}
 				});
 				return total;
 			};
@@ -96,9 +98,16 @@
 					currentNumDays,
 					totalNumDays;
 
-				days = $scope.data.days,
-				currentNumDays = $scope.data.days.length,
+				days = $scope.data.days;
+				currentNumDays = $scope.data.days.length;
 				totalNumDays = $scope.data.numDays + 1;
+
+				//null days can happen when a previously added number is deleted. Reset them
+				days.forEach(function(day) {
+					if(day.qty === null) {
+						day.qty = '';
+					}
+				});
 
 				if(currentNumDays > totalNumDays) {
 					diff = currentNumDays - totalNumDays;
