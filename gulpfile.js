@@ -56,7 +56,7 @@
     });
 
     // browser-sync task for starting the server.
-    gulp.task('browser-sync', function() {
+    gulp.task('browser-sync', ['fonts', 'views', 'styles', 'js'], function() {
         browserSync({
             server: {
                 baseDir: './public',
