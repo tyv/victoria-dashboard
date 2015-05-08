@@ -1,8 +1,9 @@
 ;(function() {
 	'use strict';
 	angular.module('dashboard')
-	.controller('loginCtrl', function loginCtrl(authService, $state) {
-		var vm = this;
+	.controller('loginCtrl', function loginCtrl(authService, $state, notifyService) {
+		var vm = this,
+			notify = notifyService;
 
 		vm.loading = false;
 
@@ -14,6 +15,7 @@
 				$state.go('dashboard');
 			})
 			.catch(function(msg) {
+				notify.alert(msg.message);
 				vm.loading = false;
 			});
 		};

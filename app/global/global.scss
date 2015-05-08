@@ -1,0 +1,31 @@
+.notify {
+	position: fixed;
+	top: 100px;
+	right: 30px;
+	width: 250px;
+	padding: 10px;
+	border-radius: 3px;
+	z-index: 200;
+	color: #fff;
+	display: flex;
+	min-height: 41px;
+
+	.icon {
+		font-size: 2rem;
+		margin-right: 5px;
+		display: flex;
+		align-items: center;
+	}
+
+	.message {
+		width: 80%;
+	}
+
+	&.success {
+		background: rgba(0, 188, 140, 0.7);
+	}
+
+	&.alert {
+		background: rgba(231, 76, 60, 0.7);
+	}
+}

@@ -1,4 +1,5 @@
 <div class="container">
+	<notify></notify>
     <form class="login-form" role="form" name="loginForm" novalidate>
         <input type="email" class="form-control" name="email" placeholder="Email" ng-model="login.email" required autofocus>
         <input type="password" class="form-control" name="password" placeholder="Password" ng-model="login.password" required>
@@ -6,3 +7,4 @@
         <input type="submit" class="btn btn-primary pull-right" ng-click="login.signin(loginForm.$valid)" ng-disabled="loginForm.$invalid" value="Sign In">
     </form>
 </div>
+
