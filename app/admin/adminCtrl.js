@@ -8,7 +8,7 @@
 		vm.burndownData = dataService.getData('burndown', 'object');
 
 		//Todo
-		vm.todoData = dataService.getData('todo', 'array');
+		vm.todoData = dataService.getData('todo', 'object');
 
 		//Velocity
 		vm.velocityData = dataService.getData('velocity', 'object');

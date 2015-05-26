@@ -4,6 +4,10 @@
 			width: 100%;
 			text-overflow: ellipsis;
 		}
+		&.block .done .input-dark {
+			text-decoration: line-through;
+			color: $light-grey;
+		}
 	}
 }
 
@@ -13,6 +17,10 @@
 		overflow: auto;
 		.vis {
 			padding: 10px 10px 0 10px;
+		.done {
+			text-decoration: line-through;
+			color: $light-grey;
+		  }
 		}
 		.items {
 			overflow: hidden;
