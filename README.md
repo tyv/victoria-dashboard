@@ -41,5 +41,6 @@ To build the files for production run ```gulp dist``` command.
 1. Go to the Dashboard of your Firebase app
 2. Click on the **Hosting** tab
 3. Follow the instructions.
+4. Make sure your firebase.json is pointing to your hosting account before deploying or you may get an error
 
 
