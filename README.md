@@ -42,4 +42,7 @@ To build the files for production run ```gulp dist``` command.
 2. Click on the **Hosting** tab
 3. Follow the instructions.
 
+#### Other hosting
+There is a simple node server provided that you can use to serve this app if you are not using the Firebase hosting
+
 
