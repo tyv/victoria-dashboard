@@ -64,6 +64,31 @@
 	}
 
 	.row-1 {
+		position: relative;
+
+		&:after,
+		&:before {
+			position: absolute;
+			top: 0;
+			z-index: -1;
+
+			width: 161px;
+			height: 295px;
+
+			background: url('images/ponies.jpg');
+
+			content: '';
+		}
+
+		&:before {
+			right: 100%;
+		}
+
+		&:after {
+			left: 100%;
+			background-position: 100% 0;
+		}
+
 		.burndown {
 			width: 770px;
 			min-height: 450px;

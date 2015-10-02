@@ -1,6 +1,6 @@
 ;(function(){
     'use strict';
-    
+
     var gulp        = require('gulp'),
         browserSync = require('browser-sync'),
         reload      = browserSync.reload,
@@ -15,7 +15,7 @@
         //karma       = require('karma').server,
         modRewrite  = require('connect-modrewrite'),
         paths;
-    
+
     paths = {
         js : [
             'node_modules/angular/angular.js',
@@ -34,7 +34,7 @@
             'app/**/*.html'
         ]
     };
-        
+
 
     // Default task to be run with `gulp`
     gulp.task('default', ['fonts', 'views', 'styles', 'js', 'browser-sync'], function () {
@@ -53,6 +53,12 @@
         //copy fonts
         gulp.src('bower_components/font-awesome/fonts/*')
         .pipe(gulp.dest('public/fonts/'));
+    });
+
+    gulp.task('images', function() {
+        //copy fonts
+        gulp.src('app/images/*')
+        .pipe(gulp.dest('public/images/'));
     });
 
     // browser-sync task for starting the server.
@@ -111,8 +117,8 @@
             .pipe(reload({stream:true}));
     });
 
-    gulp.task('dist', [ 'dist-views', 'dist-styles', 'dist-js'], function() {
-        
+    gulp.task('dist', [ 'fonts', 'images', 'dist-views', 'dist-styles', 'dist-js'], function() {
+
     });
 
     gulp.task('dist-styles', function() {
