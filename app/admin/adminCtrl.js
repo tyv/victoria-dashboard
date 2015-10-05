@@ -10,6 +10,9 @@
 		//Todo
 		vm.todoData = dataService.getData('todo', 'object');
 
+		//Suggestions
+		vm.suggestionsData = dataService.getData('suggestions', 'object');
+
 		//Velocity
 		vm.velocityData = dataService.getData('velocity', 'object');
 

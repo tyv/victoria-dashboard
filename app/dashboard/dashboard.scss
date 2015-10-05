@@ -1,5 +1,6 @@
 .dashboard-container {
 	padding: 10px 0;
+
 	.block {
 		background: $block-grey;
 		padding-bottom: 10px;
@@ -59,26 +60,14 @@
 	}
 
 	.row-1,
-	.row-2 {
+	.row-2,
+	.row-3
+	{
 		display: flex;
 	}
 
 	.row-1 {
 		position: relative;
-
-		&:after,
-		&:before {
-			position: absolute;
-			top: 0;
-			z-index: -1;
-
-			width: 161px;
-			height: 295px;
-
-			background: url('images/ponies.jpg');
-
-			content: '';
-		}
 
 		&:before {
 			right: 100%;
@@ -100,6 +89,13 @@
 	}
 
 	.row-2 {
+		.block {
+			width: 100%;
+			min-height: 330px;
+		}
+	}
+
+	.row-3 {
 		.block {
 			width: 380px;
 			min-height: 330px;

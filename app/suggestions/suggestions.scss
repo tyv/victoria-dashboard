@@ -1,0 +1,70 @@
+.admin-container {
+	.suggestions {
+		input[type="text"] {
+			width: 100%;
+			text-overflow: ellipsis;
+		}
+
+		.suggestion {
+			display: block;
+			padding-bottom: 20px;
+			margin-top: 20px;
+
+			border-bottom: 3px solid $dark-grey;
+
+			&__settings
+			{
+				margin-top: 10px;
+			}
+
+			&__input
+			{
+				display: flex;
+			}
+		}
+
+		&.block .implemented .input-dark {
+			text-decoration: line-through;
+			color: $light-grey;
+		}
+	}
+}
+
+.dashboard-container {
+	.suggestions {
+		max-height: 450px;
+		overflow: auto;
+		.table {
+			white-space: nowrap;
+
+			td,
+			th
+			{
+				font-weight: normal;
+				text-align: center;
+			}
+
+			th
+			{
+				border-bottom: 1px solid rgba(255,255,255,0.1);
+			}
+
+			.text {
+				width: 50%;
+				text-align: left;
+			}
+
+		}
+		.vis {
+			padding: 10px 10px 0 10px;
+		.implemented {
+			text-decoration: line-through;
+			color: $light-grey;
+		  }
+		}
+		.items {
+			overflow: hidden;
+			max-height: 394px;;
+		}
+	}
+}

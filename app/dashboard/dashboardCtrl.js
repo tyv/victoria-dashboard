@@ -6,6 +6,7 @@
 
 		vm.burndownData = dataService.getData('burndown', 'object');
 		vm.todoData = dataService.getData('todo', 'object');
+		vm.suggestionsData = dataService.getData('suggestions', 'object');
 		vm.npsData = dataService.getData('nps', 'object');
 		vm.satisfactionData = dataService.getData('satisfaction', 'object');
 		vm.velocityData = dataService.getData('velocity', 'object');

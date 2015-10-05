@@ -1,0 +1,53 @@
+<header class="clearfix">
+	<div ng-transclude class="pull-left"></div>
+	<div class="pull-right">{{data.length}}</div>
+</header>
+<div class="clearfix">
+	<div class="col-md-12">
+		<form name="suggestionsNew" class="form-inline top-form cols-2" novalidate>
+			<input type="text" class="form-control col-1" placeholder="Add suggestions" ng-model="newTask" ng-minlength="1" required>
+			<button class="btn btn-success add-btn" ng-click="add()" ng-disabled="suggestionsNew.$invalid">Add</button>
+		</form>
+		<form name="suggestions">
+			<ul>
+				<li class="suggestion" ng-repeat="suggestion in data.suggestions">
+					<div class="suggestion__input" ng-class="suggestion.implemented ? 'implemented' : ''">
+						<input type="text" class="form-control col-1 input-dark" ng-model="suggestion.task" ng-minlength="1" required>
+						<a class="btn delete-btn btn-default " ng-click="removeItem(suggestion)" title="Delete">
+							<span><fa name="close"></fa></span>
+						</a>
+					</div>
+					<div class="suggestion__settings">
+						<div class="btn-group" role="group">
+						  <button
+						  	type="button"
+						  	class="btn"
+						  	ng-click="toggleSuggested(suggestion)"
+						  	ng-class="suggestion.suggested ? 'btn-success' : 'btn-default'">
+						  		Suggested to PO
+						  </button>
+						  <button
+						  	type="button"
+						  	class="btn"
+						  	ng-click="toggleAccepted(suggestion)"
+						  	ng-class="suggestion.accepted ? 'btn-success' : 'btn-default'">
+						  		Accepted by PO
+						  </button>
+						  <button
+						  	type="button"
+						  	class="btn"
+						  	ng-click="toggleImplemented(suggestion)"
+						  	ng-class="suggestion.implemented ? 'btn-success' : 'btn-default'">
+						  		Implemented
+						  </button>
+
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div>
+				<button class="btn btn-primary pull-right save-btn" ng-click="save()" ng-disabled="suggestions.$invalid || !suggestions.$dirty"><fa name="thumbs-up"></fa> Save</button>
+			</div>
+		</form>
+	</div>
+</div>

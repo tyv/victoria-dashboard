@@ -37,7 +37,7 @@
 
 
     // Default task to be run with `gulp`
-    gulp.task('default', ['fonts', 'views', 'styles', 'js', 'browser-sync'], function () {
+    gulp.task('default', ['fonts', 'images', 'views', 'styles', 'js', 'browser-sync'], function () {
         gulp.watch(['app/main.js', 'app/**/*.js'], ['js']);
             // Watch our scss files
             gulp.watch(['app/main.scss', 'app/**/*.scss'], [

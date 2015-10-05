@@ -1,6 +1,6 @@
 <ng-include src="'views/adminHeader.html'"></ng-include>
 <div class="container admin-container">
-	<notify></notify>	
+	<notify></notify>
 	<div class="row">
 		<div class="col-md-6">
 			<section class="burndown block">
@@ -12,6 +12,11 @@
 				<admin-velocity data="admin.velocityData">
 					<h2>Velocity</h2>
 				</admin-velocity>
+			</section>
+			<section class="suggestions block">
+				<admin-suggestions data="admin.suggestionsData">
+					<h2>Suggestions</h2>
+				</admin-suggestions>
 			</section>
 		</div>
 		<div class="col-md-6">

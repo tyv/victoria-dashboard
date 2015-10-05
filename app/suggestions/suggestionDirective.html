@@ -1,0 +1,36 @@
+<header class="clearfix">
+	<div ng-transclude class="pull-left"></div>
+</header>
+<div class="vis">
+	<table class="suggestions table" ng-if="data.suggestions.length">
+	<thead>
+		<tr>
+			<th class="text">Suggestions</th>
+			<th>Suggested to PO</th>
+			<th>Accepted by PO</th>
+			<th>Implemented</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="suggestion in data.suggestions" ng-class="suggestion.implemented ? 'implemented' : ''">
+			<td class="text">{{suggestion.task}}</td>
+			<td ng-switch on="suggestion">
+				<fa ng-if="suggestion.suggested" name="check"></fa>
+				<span ng-if="!suggestion.suggested">—</span>
+			</td>
+			<td ng-switch on="suggestion">
+				<fa ng-if="suggestion.accepted" name="check"></fa>
+				<span ng-if="!suggestion.accepted">—</span>
+			</td>
+			<td ng-switch on="suggestion">
+				<fa ng-if="suggestion.implemented" name="check"></fa>
+				<span ng-if="!suggestion.implemented">—</span>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+	<div class="no-data" ng-if="!data.suggestions.length">
+		<fa name="tasks" class="icon"></fa>
+		No suggestion items
+	</div>
+</div>

@@ -1,3 +1,10 @@
+body
+{
+	background:
+		url('/images/ponies.jpg') -42px 62px no-repeat,
+		#000 url('/images/ponies.jpg') 100% 62px no-repeat;
+}
+
 .notify {
 	position: fixed;
 	top: 100px;
