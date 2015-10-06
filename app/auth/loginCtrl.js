@@ -12,7 +12,7 @@
 			authService.login(vm.email, vm.password)
 			.then(function() {
 				vm.loading = false;
-				$state.go('dashboard');
+				$state.go('admin');
 			})
 			.catch(function(msg) {
 				notify.alert(msg.message);

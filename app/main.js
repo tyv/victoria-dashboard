@@ -33,8 +33,7 @@
 			.state('dashboard', {
 				url: '/',
 				templateUrl: 'views/dashboard.html',
-				controller: 'dashboardCtrl as dashboard',
-				resolve: checkAuth
+				controller: 'dashboardCtrl as dashboard'
 			})
 			.state('admin', {
 				url: '/admin',
